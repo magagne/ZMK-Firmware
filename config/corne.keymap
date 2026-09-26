@@ -332,10 +332,10 @@
         Mac_Base_Layout_0 {
             label = "Apple";
             bindings = <
-&none           &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RA(RIGHT_BRACKET)  &none
-&kp LC(LEFT)    &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(RIGHT)
-&kp RA(LG(N9))  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &kp RA(LG(N0))
-                              &mo 8  &mo 1  &skq LSHIFT    &kp SPACE  &mo 2  &mo 9
+&none                 &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RA(RIGHT_BRACKET)  &none
+&kp LC(LEFT)          &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(RIGHT)
+&kp LG(LEFT_BRACKET)  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &kp LG(RIGHT_BRACKET)
+                                    &mo 8  &mo 1  &skq LSHIFT    &kp SPACE  &mo 2  &mo 9
             >;
         };
 
