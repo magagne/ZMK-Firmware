@@ -374,7 +374,7 @@
             bindings = <
 &none             &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RC(RIGHT_BRACKET)  &none
 &kp LC(LG(LEFT))  &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(LG(RIGHT))
-&mkp MB4          &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &mkp MB5
+&kp LA(LEFT)      &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &kp LA(RIGHT)
                                 &mo 8  &mo 5  &skq LSHIFT    &kp SPACE  &mo 6  &mo 9
             >;
         };
