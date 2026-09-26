@@ -332,7 +332,7 @@
         Mac_Base_Layout_0 {
             label = "Apple";
             bindings = <
-&trans                 &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RA(RIGHT_BRACKET)  &trans
+&trans                &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RA(RIGHT_BRACKET)  &trans
 &kp LC(LEFT)          &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(RIGHT)
 &kp LG(LEFT_BRACKET)  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &kp LG(RIGHT_BRACKET)
                                     &mo 8  &mo 1  &skq LSHIFT    &kp SPACE  &mo 2  &mo 9
@@ -345,7 +345,7 @@
 &trans  &kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))    &kp LG(LEFT)    &kp PAGE_DOWN   &kp PAGE_UP   &kp LG(RIGHT)    &kp PRINTSCREEN  &trans
 &trans  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BACKSPACE    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &trans
 &trans  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RETURN       &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &trans
-                               &none        &none       &none            &kp RETURN      &mo 10          &mo 11
+                                &none        &none       &none            &kp RETURN      &mo 10          &mo 11
             >;
         };
 
@@ -355,24 +355,24 @@
 &trans  &kp EXCL              &kp AT      &kp HASH                           &kp DOLLAR  &kp PRCNT     &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(MINUS)   &trans
 &trans  &kp BACKSLASH         &kp RA(N7)  &th LS(LEFT_BRACKET) LEFT_BRACKET  &kp LPAR    &kp RA(N9)    &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL       &trans
 &trans  &kp RA(LEFT_BRACKET)  &kp RA(N8)  &kp RIGHT_BRACKET                  &kp RPAR    &kp RA(N0)    &kp RA(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOSTROPHE  &trans
-                                         &mo 11                             &mo 10      &sk LSHIFT    &none          &none      &none
+                                          &mo 11                             &mo 10      &sk LSHIFT    &none          &none      &none
             >;
         };
 
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&trans  &none     &none     &HID_DragScroll  &Macro_M08_UnComment  &none        &none           &none           &none           &none            &none  &trans
-&trans  &kp LALT  &kp LGUI  &kp LSHFT        &kp LCTRL             &none        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT  &none  &trans
-&trans  &none     &none     &none            &LCLK_LCLK            &none        &none           &msc SCRL_UP    &msc SCRL_DOWN  &none            &none  &trans
-                           &mkp MCLK        &mkp RCLK             &mkp LCLK    &none           &none           &none
+&trans  &none     &none     &HID_DragScroll  &none       &none        &none           &none           &none           &none            &none  &trans
+&trans  &kp LALT  &kp LGUI  &kp LSHFT        &kp LCTRL   &none        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT  &none  &trans
+&trans  &none     &none     &none            &LCLK_LCLK  &none        &none           &msc SCRL_UP    &msc SCRL_DOWN  &none            &none  &trans
+                            &mkp MCLK        &mkp RCLK   &mkp LCLK    &none           &none           &none
             >;
         };
 
         Win_Base_Layout_4 {
             label = "Windows";
             bindings = <
-&trans             &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RC(RIGHT_BRACKET)  &trans
+&trans            &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RC(RIGHT_BRACKET)  &trans
 &kp LC(LG(LEFT))  &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(LG(RIGHT))
 &kp LA(LEFT)      &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &kp LA(RIGHT)
                                 &mo 8  &mo 5  &skq LSHIFT    &kp SPACE  &mo 6  &mo 9
@@ -385,7 +385,7 @@
 &trans  &kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)        &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &kp PRINTSCREEN  &trans
 &trans  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BACKSPACE    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &trans
 &trans  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RETURN       &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &trans
-                               &none        &none       &none            &kp RETURN      &mo 10          &mo 11
+                                &none        &none       &none            &kp RETURN      &mo 10          &mo 11
             >;
         };
 
@@ -395,7 +395,7 @@
 &trans  &kp EXCL              &kp AT      &kp HASH                           &kp DOLLAR  &kp PRCNT     &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(GRAVE)   &trans
 &trans  &kp BACKSLASH         &kp RA(N7)  &th LS(LEFT_BRACKET) LEFT_BRACKET  &kp LPAR    &kp RA(N9)    &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL       &trans
 &trans  &kp RA(LEFT_BRACKET)  &kp RA(N8)  &kp RIGHT_BRACKET                  &kp RPAR    &kp RA(N0)    &kp LS(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOSTROPHE  &trans
-                                         &mo 11                             &mo 10      &sk LSHIFT    &none          &none      &none
+                                          &mo 11                             &mo 10      &sk LSHIFT    &none          &none      &none
             >;
         };
 
@@ -405,7 +405,7 @@
 &trans  &none     &none     &LED_DragScroll  &none       &none        &none           &none           &none           &none            &none  &trans
 &trans  &kp LALT  &kp LGUI  &kp LSHFT        &kp LCTRL   &none        &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP    &mmv MOVE_RIGHT  &none  &trans
 &trans  &none     &none     &none            &LCLK_LCLK  &none        &none           &msc SCRL_UP    &msc SCRL_DOWN  &none            &none  &trans
-                           &mkp MCLK        &mkp RCLK   &mkp LCLK    &none           &none           &none
+                            &mkp MCLK        &mkp RCLK   &mkp LCLK    &none           &none           &none
             >;
         };
 
@@ -415,7 +415,7 @@
 &trans  &none     &none      &kp LC(LS(LA(LEFT_GUI)))  &none      &none      &none         &kp N7  &kp N8   &kp N9  &kp LOCKING_NUM  &trans
 &trans  &kp LALT  &kp LGUI   &kp LSHIFT                &kp LCTRL  &kp DEL    &kp KP_MINUS  &kp N4  &kp N5   &kp N6  &kp KP_DIVIDE    &trans
 &trans  &kp RALT  &kp GLOBE  &none                     &kp RCTRL  &kp RET    &kp KP_PLUS   &kp N1  &kp N2   &kp N3  &kp KP_MULTIPLY  &trans
-                            &none                     &none      &none      &kp SPACE     &kp N0  &kp DOT
+                             &none                     &none      &none      &kp SPACE     &kp N0  &kp DOT
             >;
         };
 
@@ -425,7 +425,7 @@
 &trans  &none     &none      &none       &none      &none    &none  &kp F7  &kp F8  &kp F9  &kp F10  &trans
 &trans  &kp LALT  &kp LGUI   &kp LSHIFT  &kp LCTRL  &none    &none  &kp F4  &kp F5  &kp F6  &kp F11  &trans
 &trans  &kp RALT  &kp GLOBE  &none       &kp RCTRL  &none    &none  &kp F1  &kp F2  &kp F3  &kp F12  &none
-                            &none       &none      &none    &none  &none   &none
+                             &none       &none      &none    &none  &none   &none
             >;
         };
 
