@@ -332,10 +332,10 @@
         Mac_Base_Layout_0 {
             label = "Apple";
             bindings = <
-&none         &kp Q  &kp W  &kp F  &kp P  &kp B    &kp J      &kp L  &kp U      &kp Y    &kp RA(RIGHT_BRACKET)  &none
-&kp LC(LEFT)  &kp A  &kp R  &kp S  &kp T  &kp G    &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(RIGHT)
-&sk LSHIFT    &kp Z  &kp X  &kp C  &kp D  &kp V    &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &sk RSHIFT
-                            &mo 8  &mo 1  &mo 3    &kp SPACE  &mo 2  &mo 9
+&none          &kp Q  &kp W  &kp F  &kp P  &kp B    &kp J      &kp L  &kp U      &kp Y    &kp RA(RIGHT_BRACKET)  &none
+&kp LC(LEFT)   &kp A  &kp R  &kp S  &kp T  &kp G    &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(RIGHT)
+&kp RA(LG(N9)) &kp Z  &kp X  &kp C  &kp D  &kp V    &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &kp RA(LG(N0))
+                             &mo 8  &mo 1  &skq LSHIFT    &kp SPACE  &mo 2  &mo 9
             >;
         };
 
@@ -374,8 +374,8 @@
             bindings = <
 &none             &kp Q  &kp W  &kp F  &kp P  &kp B    &kp J      &kp L  &kp U      &kp Y    &kp RC(RIGHT_BRACKET)  &none
 &kp LC(LG(LEFT))  &kp A  &kp R  &kp S  &kp T  &kp G    &kp M      &kp N  &kp E      &kp I    &kp O                  &kp LC(LG(RIGHT))
-&sk LSHIFT        &kp Z  &kp X  &kp C  &kp D  &kp V    &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &sk RSHIFT
-                                &mo 8  &mo 5  &mo 7    &kp SPACE  &mo 6  &mo 9
+ &kp LA(LEFT)     &kp Z  &kp X  &kp C  &kp D  &kp V    &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &kp LA(RIGHT)
+                                &mo 8  &mo 5  &skq LSHIFT         &kp SPACE  &mo 6  &mo 9
             >;
         };
 
