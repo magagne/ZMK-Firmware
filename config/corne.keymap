@@ -362,10 +362,10 @@
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&none   &none       &none      &none      &none            &none        &none  &none         &none           &none  &none  &none 
-&none   &kp LC(LEFT)  &mkp MCLK  &mkp RCLK  &mkp LCLK        &none        &none  &kp LG(LEFT_BRACKET)     &kp LG(RIGHT_BRACKET)        &none  &kp LC(RIGHT)  &none 
-&none   &kp LALT    &kp LGUI   &kp LSHFT  &kp LCTRL        &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none  &none  &none 
-                               &none      &HID_DragScroll  &kp LSHFT    &none  &none         &none
+&none   &kp LG(LEFT_BRACKET)          &none      &HID_DragScroll     &none             &none                    &none       &none                    &none                       &none      &kp LG(RIGHT_BRACKET)                &none 
+&none   &kp LALT      &kp LGUI   &kp LSHFT           &kp LCTRL         &none                    &none       &none                    &none       &none       &none                &none 
+&none   &kp LC(LEFT)  &none      &none               &none             &none                    &none       &msc SCRL_UP             &msc SCRL_DOWN              &none       &kp LC(RIGHT)        &none 
+                                 &mkp RCLK           &mkp LCLK         &LCLK_LCLK               &none       &none                    &none
             >;
         };
 
@@ -402,10 +402,10 @@
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&none   &none       &none      &none      &none            &none        &none  &none         &none           &none  &none  &none 
-&none   &kp LC(LG(LEFT))  &mkp MCLK  &mkp RCLK  &mkp LCLK        &none        &none  &kp LA(LEFT)       &kp LA(RIGHT)        &none  &kp LC(LG(RIGHT))  &none 
-&none   &kp LALT    &kp LGUI   &kp LSHFT  &kp LCTRL        &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none  &none  &none 
-                               &none      &LED_DragScroll  &kp LSHFT    &none  &none         &none
+&none  &kp LA(LEFT)             &none      &HID_DragScroll     &none             &none                    &none       &none                    &none                       &none       &kp LA(RIGHT)                &none 
+&none  &kp LALT          &kp LGUI   &kp LSHFT           &kp LCTRL         &none                    &none       &none                    &none                  &none       &none                &none 
+&none  &kp LC(LG(LEFT))  &none      &none               &none             &none                    &none       &msc SCRL_UP             &msc SCRL_DOWN             &none        &kp LC(LG(RIGHT))        &none 
+                                    &mkp RCLK           &mkp LCLK         &LCLK_LCLK               &none       &none                    &none
             >;
         };
 
