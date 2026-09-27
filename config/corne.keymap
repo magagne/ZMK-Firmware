@@ -290,7 +290,7 @@
         // Mouse
         // ------------------------------------------------------------- 
 
-        LCLK_LCLK: LCLK_LCLK {
+        2xLCLK: 2xLCLK {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&mkp LCLK &mkp LCLK>;
@@ -364,7 +364,7 @@
             bindings = <
 &none  &none       &none     &HID_DragScroll       &none                  &none        &none  &none  &none  &none  &none  &none
 &none  &kp LALT    &kp LGUI  &kp LSHFT             &kp LCTRL              &none        &none  &none  &none  &none  &none  &none
-&none  &LCLK_LCLK  &none     &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &none        &none  &none  &none  &none  &none  &none
+&none  &2xLCLK  &none     &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &none        &none  &none  &none  &none  &none  &none
                              &mkp MCLK             &mkp RCLK              &mkp LCLK    &none  &none  &none
             >;
         };
@@ -404,7 +404,7 @@
             bindings = <
 &none  &none       &none     &LED_DragScroll  &kp SCROLLLOCK  &none        &none  &none  &none  &none  &none  &none
 &none  &kp LALT    &kp LGUI  &kp LSHFT        &kp LCTRL       &none        &none  &none  &none  &none  &none  &none
-&none  &LCLK_LCLK  &none     &kp LA(LEFT)     &kp LA(RIGHT)   &none        &none  &none  &none  &none  &none  &none
+&none  &2xLCLK  &none     &kp LA(LEFT)     &kp LA(RIGHT)   &none        &none  &none  &none  &none  &none  &none
                              &mkp MCLK        &mkp RCLK       &mkp LCLK    &none  &none  &none
             >;
         };
