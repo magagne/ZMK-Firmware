@@ -368,7 +368,7 @@
                                  &mkp RCLK           &mkp LCLK         &LCLK_LCLK               &none       &none                    &none
             >;
         };
- &kp LC(LEFT)             &kp LC(RIGHT)e
+
         Win_Base_Layout_4 {
             label = "Windows";
             bindings = <
@@ -408,7 +408,7 @@
                                     &mkp RCLK           &mkp LCLK         &LCLK_LCLK               &none       &none                    &none
             >;
         };
-h
+        
         Num_Layout_8 {
             label = "Num";
             bindings = <
