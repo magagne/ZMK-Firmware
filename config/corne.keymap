@@ -364,10 +364,13 @@
             bindings = <
 &none  &none     &none      &HID_DragScroll       &none                  &none        &none  &none         &none          &none  &none  &none
 &none  &kp LALT  &kp LGUI   &kp LSHFT             &kp LCTRL              &none        &none  &kp LC(LEFT)  &kp LC(RIGHT)  &none  &none  &none
-&none  &none     &mkp MCLK  &mkp RCLK             &LCLK_LCLK             &none        &none  &none         &none          &none  &none  &none
-                            &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &mkp LCLK    &none  &none         &none
+&none   &LCLK_LCLK      &none  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)             &none        &none  &none         &none          &none  &none  &none
+                            &mkp MCLK              &mkp RCLK   &mkp LCLK    &none  &none         &none
             >;
         };
+
+&kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET) 
+
 
         Win_Base_Layout_4 {
             label = "Windows";
@@ -404,11 +407,11 @@
             bindings = <
 &none  &none     &none      &LED_DragScroll  &kp SCROLLLOCK  &none        &none  &none             &none              &none  &none  &none
 &none  &kp LALT  &kp LGUI   &kp LSHFT        &kp LCTRL       &none        &none  &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))  &none  &none  &none
-&none  &none     &mkp MCLK  &mkp RCLK        &LCLK_LCLK      &none        &none  &none             &none              &none  &none  &none
-                            &kp LA(LEFT)     &kp LA(RIGHT)   &mkp LCLK    &none  &none             &none
+&none   &LCLK_LCLK &none    &kp LA(LEFT)     &kp LA(RIGHT)   &none        &none  &none             &none              &none  &none  &none
+                             &mkp MCLK        &mkp RCLK      &mkp LCLK    &none  &none             &none
             >;
         };
-
+&kp LA(LEFT)     &kp LA(RIGHT) 
         Num_Layout_8 {
             label = "Num";
             bindings = <
