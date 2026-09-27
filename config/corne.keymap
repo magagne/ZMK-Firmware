@@ -362,10 +362,10 @@
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&trans  &none     &none     &HID_DragScroll  &none       &none        &none  &none         &none           &none      &none  &trans
-&trans  &kp LALT  &kp LGUI  &kp LSHFT        &kp LCTRL   &none        &none  &mkp LCLK     &mkp RCLK       &mkp MCLK  &none  &trans
-&trans  &none     &none     &none            &LCLK_LCLK  &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none      &none  &trans
-                            &mkp MCLK        &mkp RCLK   &mkp LCLK    &none  &none         &none
+&trans  &none       &none     &HID_DragScroll  &none      &none        &none  &none         &none           &none      &none  &trans
+&trans  &kp LALT    &kp LGUI  &kp LSHFT        &kp LCTRL  &none        &none  &mkp LCLK     &mkp RCLK       &mkp MCLK  &none  &trans
+&trans  &LCLK_LCLK  &none     &mkp MB4         &mkp MB5   &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none      &none  &trans
+                              &mkp MCLK        &mkp RCLK  &mkp LCLK    &none  &none         &none
             >;
         };
 
@@ -402,10 +402,10 @@
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&trans  &none     &none     &LED_DragScroll  &none       &none        &none  &none         &none           &none      &none  &trans
-&trans  &kp LALT  &kp LGUI  &kp LSHFT        &kp LCTRL   &none        &none  &mkp LCLK     &mkp RCLK       &mkp MCLK  &none  &trans
-&trans  &none     &none     &none            &LCLK_LCLK  &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none      &none  &trans
-                            &mkp MCLK        &mkp RCLK   &mkp LCLK    &none  &none         &none
+&trans  &none       &none     &LED_DragScroll  &none      &none        &none  &none         &none           &none      &none  &trans
+&trans  &kp LALT    &kp LGUI  &kp LSHFT        &kp LCTRL  &none        &none  &mkp LCLK     &mkp RCLK       &mkp MCLK  &none  &trans
+&trans  &LCLK_LCLK  &none     &mkp MB4         &mkp MB5   &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none      &none  &trans
+                              &mkp MCLK        &mkp RCLK  &mkp LCLK    &none  &none         &none
             >;
         };
 
