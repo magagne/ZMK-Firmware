@@ -369,8 +369,6 @@
             >;
         };
 
-&kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET) 
-
 
         Win_Base_Layout_4 {
             label = "Windows";
@@ -411,7 +409,7 @@
                              &mkp MCLK        &mkp RCLK      &mkp LCLK    &none  &none             &none
             >;
         };
-&kp LA(LEFT)     &kp LA(RIGHT) 
+
         Num_Layout_8 {
             label = "Num";
             bindings = <
