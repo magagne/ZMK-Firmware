@@ -352,20 +352,20 @@
         Mac_Symbol_Layout_2 {
             label = "Symbol";
             bindings = <
-&trans  &kp EXCL              &kp AT      &kp HASH                           &kp DOLLAR  &kp PRCNT     &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(MINUS)   &trans
-&trans  &kp BACKSLASH         &kp RA(N7)  &th LS(LEFT_BRACKET) LEFT_BRACKET  &kp LPAR    &kp RA(N9)    &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL       &trans
-&trans  &kp RA(LEFT_BRACKET)  &kp RA(N8)  &kp RIGHT_BRACKET                  &kp RPAR    &kp RA(N0)    &kp RA(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOSTROPHE  &trans
-                                          &none                              &mo 10      &sk LSHIFT    &none          &none      &mo 11
+&trans  &kp EXCL              &kp AT      &kp HASH                           &kp DOLLAR  &kp PRCNT      &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(MINUS)   &trans
+&trans  &kp BACKSLASH         &kp RA(N7)  &th LS(LEFT_BRACKET) LEFT_BRACKET  &kp LPAR    &kp RA(N9)     &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL       &trans
+&trans  &kp RA(LEFT_BRACKET)  &kp RA(N8)  &kp RIGHT_BRACKET                  &kp RPAR    &kp RA(N0)     &kp RA(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOSTROPHE  &trans
+                                          &none                              &mo 10      &skq LSHIFT    &none          &none      &mo 11
             >;
         };
 
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&trans  &none       &none           &none                   &none               &none                            &none       &none              &none             &none              &none               &trans
-&trans  &LCLK_LCLK  &mkp MCLK       &kp RCLK                &mkp LCLK           &none                            &none       &mkp MB4           &mkp MB5          &none              &none               &trans
-&trans  &kp LALT    &kp LGUI        &kp LSHFT               &kp LCTRL           &none                            &none       &msc SCRL_UP       &msc SCRL_DOWN    &none              &none               &trans
-                                    &none                   &HID_DragScroll     &kp LSHFT                        &none       &none              &none
+&trans  &none       &none      &none      &none            &none        &none  &none         &none           &none  &none  &trans
+&trans  &LCLK_LCLK  &mkp MCLK  &mkp RCLK  &mkp LCLK        &none        &none  &mkp MB4      &mkp MB5        &none  &none  &trans
+&trans  &kp LALT    &kp LGUI   &kp LSHFT  &kp LCTRL        &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none  &none  &trans
+                               &none      &HID_DragScroll  &kp LSHFT    &none  &none         &none
             >;
         };
 
@@ -402,10 +402,10 @@
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&trans  &none       &none           &none                   &none               &none                            &none       &none              &none             &none              &none               &trans
-&trans  &LCLK_LCLK  &mkp MCLK       &mkp RCLK               &mkp LCLK           &none                            &none       &mkp MB4           &mkp MB5          &none              &none               &trans
-&trans  &kp LALT    &kp LGUI        &kp LSHFT               &kp LCTRL           &none                            &none       &msc SCRL_UP       &msc SCRL_DOWN    &none              &none               &trans
-                                    &none                   &LED_DragScroll     &kp LSHFT                        &none       &none              &none
+&trans  &none       &none      &none      &none            &none        &none  &none         &none           &none  &none  &trans
+&trans  &LCLK_LCLK  &mkp MCLK  &mkp RCLK  &mkp LCLK        &none        &none  &mkp MB4      &mkp MB5        &none  &none  &trans
+&trans  &kp LALT    &kp LGUI   &kp LSHFT  &kp LCTRL        &none        &none  &msc SCRL_UP  &msc SCRL_DOWN  &none  &none  &trans
+                               &none      &LED_DragScroll  &kp LSHFT    &none  &none         &none
             >;
         };
 
