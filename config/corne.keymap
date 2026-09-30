@@ -363,7 +363,7 @@
             label = "Mouse";
             bindings = <
 &none  &none     &none     &mkp MCLK             &none                  &none              &none  &none  &none  &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT             &kp LCTRL              &none              &none  &mo 3  &none  &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT             &kp LCTRL              &none              &none  &none  &none  &none  &none  &none
 &none  &LCLKx2   &none     &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &none              &none  &none  &none  &none  &none  &none
                            &mkp RCLK             &mkp LCLK              &HID_DragScroll    &none  &none  &none
             >;
@@ -403,7 +403,7 @@
             label = "Mouse";
             bindings = <
 &none  &none     &none     &mkp MCLK     &none          &none              &none  &none  &none  &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL      &none              &none  &mo 7  &none  &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL      &none              &none  &none  &none  &none  &none  &none
 &none  &LCLKx2   &none     &kp LA(LEFT)  &kp LA(RIGHT)  &none              &none  &none  &none  &none  &none  &none
                            &mkp RCLK     &mkp LCLK      &LED_DragScroll    &none  &none  &none
             >;
