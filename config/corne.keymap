@@ -342,10 +342,10 @@
         Mac_Extend_Layout_1 {
             label = "Extend";
             bindings = <
-&none  &kp LG(Z)  &kp LG(X)  &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))    &kp LG(LEFT)    &kp PAGE_DOWN   &kp PAGE_UP   &kp LG(RIGHT)    &kp PRINTSCREEN  &none
-&none  &skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &none            &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &none
-&none  &skq RALT  &none      &kp TAB      &skq RCTRL  &none            &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
-                             &none        &none       &none            &kp RETURN      &mo 10          &none
+&none  &kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))    &kp LG(LEFT)    &kp PAGE_DOWN   &kp PAGE_UP   &kp LG(RIGHT)    &kp PRINTSCREEN  &none
+&none  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BACKSPACE    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &none
+&none  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RETURN       &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
+                               &none        &none       &none            &kp RETURN      &mo 10          &none
             >;
         };
 
@@ -382,10 +382,10 @@
         Win_Extend_Layout_5 {
             label = "Extend";
             bindings = <
-&none  &kp LC(Z)  &kp LC(X)  &kp LC(C)    &kp LC(V)   &kp LC(Y)    &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &kp PRINTSCREEN  &none
-&none  &skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &none        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &none
-&none  &skq RALT  &none      &kp TAB      &skq RCTRL  &none        &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
-                             &none        &none       &none        &kp RETURN      &mo 10          &none
+&none  &kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)        &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &kp PRINTSCREEN  &none
+&none  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BACKSPACE    &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &none
+&none  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RETURN       &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
+                               &none        &none       &none            &kp RETURN      &mo 10          &none
             >;
         };
 
