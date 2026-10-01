@@ -344,7 +344,7 @@
             bindings = <
 &none  &kp LG(Z)  &kp LG(X)  &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))    &kp LG(LEFT)    &kp PAGE_DOWN   &kp PAGE_UP   &kp LG(RIGHT)    &kp PRINTSCREEN  &none
 &none  &skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &none            &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &none
-&none  &skq RALT  &none      &none        &skq RCTRL  &none            &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
+&none  &skq RALT  &none      &kp TAB      &skq RCTRL  &none            &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
                              &none        &none       &none            &kp RETURN      &mo 10          &none
             >;
         };
@@ -384,7 +384,7 @@
             bindings = <
 &none  &kp LC(Z)  &kp LC(X)  &kp LC(C)    &kp LC(V)   &kp LC(Y)    &kp HOME        &kp PAGE_DOWN   &kp PAGE_UP   &kp END          &kp PRINTSCREEN  &none
 &none  &skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &none        &kp LEFT_ARROW  &kp DOWN_ARROW  &kp UP_ARROW  &kp RIGHT_ARROW  &kp ESC          &none
-&none  &skq RALT  &none      &none        &skq RCTRL  &none        &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
+&none  &skq RALT  &none      &kp TAB      &skq RCTRL  &none        &kp DELETE      &kp BACKSPACE   &kp TAB       &kp INSERT       &kp CAPS         &none
                              &none        &none       &none        &kp RETURN      &mo 10          &none
             >;
         };
@@ -412,10 +412,10 @@
         Num_Layout_8 {
             label = "Num";
             bindings = <
-&none  &none     &none      &kp LC(LS(LA(LEFT_GUI)))  &none      &none      &none         &kp N7  &kp N8      &kp N9  &kp LOCKING_NUM  &none
-&none  &kp LALT  &kp LGUI   &kp LSHIFT                &kp LCTRL  &kp DEL    &kp KP_MINUS  &kp N4  &kp N5      &kp N6  &kp KP_DIVIDE    &none
-&none  &kp RALT  &kp GLOBE  &none                     &kp RCTRL  &kp RET    &kp KP_PLUS   &kp N1  &kp N2      &kp N3  &kp KP_MULTIPLY  &none
-                            &none                     &none      &none      &kp KP_ENTER  &kp N0  &kp KP_DOT
+&none  &none     &none      &kp LC(LS(LA(LEFT_GUI)))  &none      &none    &none         &kp N7  &kp N8      &kp N9  &kp LOCKING_NUM  &none
+&none  &kp LALT  &kp LGUI   &kp LSHIFT                &kp LCTRL  &none    &kp KP_MINUS  &kp N4  &kp N5      &kp N6  &kp KP_DIVIDE    &none
+&none  &kp RALT  &kp GLOBE  &none                     &kp RCTRL  &none    &kp KP_PLUS   &kp N1  &kp N2      &kp N3  &kp KP_MULTIPLY  &none
+                            &none                     &none      &none    &kp KP_ENTER  &kp N0  &kp KP_DOT
             >;
         };
 
