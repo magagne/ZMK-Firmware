@@ -362,9 +362,9 @@
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&none  &none     &none     &none  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)     &none              &none  &none                 &none                  &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT  &kp LCTRL  &none              &none  &mkp RCLK             &mkp MCLK              &none  &none  &none
-&none  &none     &none      &kp LCTRL(LEFT)       &kp LCTRL(RIGHT)     &none              &none  &none              &none   &none  &none  &none
+&none  &none     &none     &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)                 &none  &none                 &none                  &none  &none  &none &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT            &kp LCTRL  &none              &none  &mkp RCLK             &mkp MCLK              &none  &none  &none
+&none  &none     &none     &kp LC(LEFT)       &kp LC(RIGHT)     &none              &none  &none              &none   &none  &none  &none
                            &LCLKx2    &mkp LCLK  &HID_DragScroll    &none  &none                 &none
             >;
         };
