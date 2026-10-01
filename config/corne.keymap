@@ -363,9 +363,9 @@
             label = "Mouse";
             bindings = <
 &none  &none     &none     &none      &none      &none              &none  &none                 &none                  &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT  &kp LCTRL  &none              &none  &LCLKx2               &mkp MCLK              &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT  &kp LCTRL  &none              &none  &mkp RCLK             &mkp MCLK              &none  &none  &none
 &none  &none     &none     &none      &none      &none              &none  &kp LG(LEFT_BRACKET)  &kp LG(RIGHT_BRACKET)  &none  &none  &none
-                           &mkp RCLK  &mkp LCLK  &HID_DragScroll    &none  &none                 &none
+                           &LCLKx2    &mkp LCLK  &HID_DragScroll    &none  &none                 &none
             >;
         };
 
@@ -403,9 +403,9 @@
             label = "Mouse";
             bindings = <
 &none  &none     &none     &none      &none      &none              &none  &none         &none          &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT  &kp LCTRL  &none              &none  &LCLKx2       &mkp MCLK      &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT  &kp LCTRL  &none              &none  &mkp RCLK     &mkp MCLK      &none  &none  &none
 &none  &none     &none     &none      &none      &none              &none  &kp LA(LEFT)  &kp LA(RIGHT)  &none  &none  &none
-                           &mkp RCLK  &mkp LCLK  &LED_DragScroll    &none  &none         &none
+                           &LCLKx2    &mkp LCLK  &LED_DragScroll    &none  &none         &none
             >;
         };
 
