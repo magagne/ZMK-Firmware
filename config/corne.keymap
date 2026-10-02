@@ -401,11 +401,11 @@
 
         Win_Mouse_Layout_7 {
             label = "Mouse";
-            bindings = <stsbb
-&none  &none     &none      &LED_DragScroll     &none      &none                     &none  &none               &none             &none             &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT         &kp LCTRL   &none                       &none  &none               &kp LA(LEFT)      &kp LA(RIGHT)     &none   &none
-&none  &none     &none      &none     &none  &none                                   &none  &none               &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))  &none  &none 
-                           &mkp RCLK           &mkp LCLK          &LCLKx2            &none  &none      &none 
+            bindings = <
+&none  &none     &none     &LED_DragScroll   &none          &none                                                &none  &none               &none             &none             &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT         &kp LCTRL      &none                                                  &none  &none               &kp LA(LEFT)      &kp LA(RIGHT)     &none   &none
+&none  &none     &none     &none             &none           &none                                                              &none  &none               &kp LG(LC(LEFT))  &kp LG(LC(RIGHT)) &none  &none 
+                           &mkp RCLK           &mkp LCLK          &LCLKx2                                       &none  &none      &none 
             >;
         };
 
