@@ -9,3 +9,9 @@ include:
 
   - board: nice_nano_v2
     shield: settings_reset
+
+  - board: seeeduino_xiao_ble
+    shield: totem_left
+
+  - board: seeeduino_xiao_ble
+    shield: totem_right
