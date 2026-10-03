@@ -64,7 +64,7 @@
 
         Combo_Macro_M12 {
             bindings = <&Macro_M12>;
-            key-positions = <7 28>;
+            key-positions = <8 29>;
             layers = <1 5>;
         };
 
