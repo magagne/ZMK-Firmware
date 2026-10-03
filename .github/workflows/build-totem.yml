@@ -3,7 +3,6 @@ name: Build Totem
 on:
   push:
     paths:
-      - 'config/totem/**'
       - 'config/totem.conf'
       - 'config/totem.keymap'
       - 'config/common/**'
@@ -13,7 +12,6 @@ on:
       - '.github/workflows/build-totem.yml'
   pull_request:
     paths:
-      - 'config/totem/**'
       - 'config/totem.conf'
       - 'config/totem.keymap'
       - 'config/common/**'

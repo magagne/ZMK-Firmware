@@ -3,7 +3,6 @@ name: Build Corne
 on:
   push:
     paths:
-      - 'config/corne/**'
       - 'config/corne.conf'
       - 'config/corne.keymap'
       - 'config/corne.json'
@@ -14,7 +13,6 @@ on:
       - '.github/workflows/build-corne.yml'
   pull_request:
     paths:
-      - 'config/corne/**'
       - 'config/corne.conf'
       - 'config/corne.keymap'
       - 'config/corne.json'
