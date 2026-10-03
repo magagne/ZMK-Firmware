@@ -324,7 +324,7 @@
         /           &kp KP_DIVIDE                KC_KP_SLASH
         \           &kp LS(GRAVE)                LSFT(KC_GRV)
         |           &kp RA(GRAVE)                RALT(KC_GRV)
-*/
+    */
 
     keymap {
         compatible = "zmk,keymap";
