@@ -1,0 +1,30 @@
+name: Build Totem
+
+on:
+  push:
+    paths:
+      - 'config/totem/**'
+      - 'config/totem.conf'
+      - 'config/totem.keymap'
+      - 'config/common/**'
+      - 'config/west.yml'
+      - 'zephyr/**'
+      - 'build/totem.yaml'
+      - '.github/workflows/build-totem.yml'
+  pull_request:
+    paths:
+      - 'config/totem/**'
+      - 'config/totem.conf'
+      - 'config/totem.keymap'
+      - 'config/common/**'
+      - 'config/west.yml'
+      - 'zephyr/**'
+      - 'build/totem.yaml'
+      - '.github/workflows/build-totem.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3.0
+    with:
+      build_matrix_path: build/totem.yaml
