@@ -332,87 +332,87 @@
         Mac_Base_Layout_0 {
             label = "Apple";
             bindings = <
-&none  &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RA(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O                  &none
-&none  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &none
-                     &mo 8  &mo 1  &skq LSHIFT    &kp SPACE  &mo 2  &mo 9
+&none         &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RA(RBKT)  &none
+&none         &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O         &none
+&kp LC(LEFT)  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH      &kp LC(RIGHT)
+                            &mo 8  &mo 1  &skq LSHIFT    &kp SPACE  &mo 2  &mo 9
             >;
         };
 
         Mac_Extend_Layout_1 {
             label = "Extend";
             bindings = <
-&none  &kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))    &kp LG(LEFT)    &kp PG_DN   &kp PG_UP   &kp LG(RIGHT)    &kp PRINTSCREEN  &none
-&none  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BSPC    &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp ESC          &none
-&none  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RET       &kp DEL      &kp BSPC   &kp TAB       &kp INS       &kp CAPS         &none
-                               &none        &none       &none            &kp RET      &mo 10          &none
+&none  &kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))    &kp LG(LEFT)  &kp PG_DN  &kp PG_UP  &kp LG(RIGHT)  &kp PRINTSCREEN  &none
+&none  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BSPC         &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT      &kp ESC          &none
+&none  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RET          &kp DEL       &kp BSPC   &kp TAB    &kp INS        &kp CAPS         &none
+                               &none        &none       &none            &kp RET       &mo 10     &none
             >;
         };
 
         Mac_Symbol_Layout_2 {
             label = "Symbol";
             bindings = <
-&none  &kp EXCL              &kp AT      &kp HASH                           &kp DOLLAR  &kp PRCNT      &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(MINUS)   &none
-&none  &kp BSLH         &kp RA(N7)  &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)     &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL       &none
-&none  &kp RA(LBKT)  &kp RA(N8)  &kp RBKT                  &kp RPAR    &kp RA(N0)     &kp RA(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOS  &none
-                                         &none                              &mo 10      &skq LSHIFT    &none          &none      &mo 11
+&none  &kp EXCL      &kp AT      &kp HASH           &kp DOLLAR  &kp PRCNT      &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(MINUS)  &none
+&none  &kp BSLH      &kp RA(N7)  &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)     &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL      &none
+&none  &kp RA(LBKT)  &kp RA(N8)  &kp RBKT           &kp RPAR    &kp RA(N0)     &kp RA(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOS       &none
+                                 &none              &mo 10      &skq LSHIFT    &none          &none      &mo 11
             >;
         };
 
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&none  &none     &none     &HID_DragScroll  &none   &none              &none &none       &none       &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT             &kp LCTRL     &none           &none    &kp LC(LEFT)          &kp LC(RIGHT)     &none      &none  &none  
-&none  &none     &none      &kp LG(LBKT)  &kp LG(RBKT)          &none               &none     &none      &none &none       &none       &none  
-                           &mkp RCLK                &mkp LCLK              &LCLKx2   &none  &none      &none
+&none  &none     &none     &HID_DragScroll  &none         &none      &none  &none  &none  &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT        &kp LCTRL     &none      &none  &none  &none  &none  &none  &none
+&none  &none     &none     &kp LG(LBKT)     &kp LG(RBKT)  &none      &none  &none  &none  &none  &none  &none
+                           &mkp RCLK        &mkp LCLK     &LCLKx2    &none  &none  &none
             >;
         };
 
         Win_Base_Layout_4 {
             label = "Windows";
             bindings = <
-&none  &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RC(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O                  &none
-&none  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH               &none
-                     &mo 8  &mo 5  &skq LSHIFT    &kp SPACE  &mo 6  &mo 9
+&none             &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RC(RBKT)  &none
+&none             &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O         &none
+&kp LC(LG(LEFT))  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH      &kp LC(LG(RIGHT))
+                                &mo 8  &mo 5  &skq LSHIFT    &kp SPACE  &mo 6  &mo 9
             >;
         };
 
         Win_Extend_Layout_5 {
             label = "Extend";
             bindings = <
-&none  &kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)        &kp HOME        &kp PG_DN   &kp PG_UP   &kp END          &kp PRINTSCREEN  &none
-&none  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BSPC    &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT  &kp ESC          &none
-&none  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RET       &kp DEL      &kp BSPC   &kp TAB       &kp INS       &kp CAPS         &none
-                               &none        &none       &none            &kp RET      &mo 10          &none
+&none  &kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)    &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &kp PRINTSCREEN  &none
+&none  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BSPC     &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp ESC          &none
+&none  &skq RALT  &kp LS(TAB)  &kp TAB      &skq RCTRL  &kp RET      &kp DEL   &kp BSPC   &kp TAB    &kp INS    &kp CAPS         &none
+                               &none        &none       &none        &kp RET   &mo 10     &none
             >;
         };
 
         Win_Symbol_Layout_6 {
             label = "Symbol";
             bindings = <
-&none  &kp EXCL              &kp AT      &kp HASH                           &kp DOLLAR  &kp PRCNT      &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(GRAVE)   &none
-&none  &kp BSLH         &kp RA(N7)  &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)     &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL       &none
-&none  &kp RA(LBKT)  &kp RA(N8)  &kp RBKT                  &kp RPAR    &kp RA(N0)     &kp LS(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOS  &none
-                                         &none                              &mo 10      &skq LSHIFT    &none          &none      &mo 11
+&none  &kp EXCL      &kp AT      &kp HASH           &kp DOLLAR  &kp PRCNT      &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(GRAVE)  &none
+&none  &kp BSLH      &kp RA(N7)  &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)     &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL      &none
+&none  &kp RA(LBKT)  &kp RA(N8)  &kp RBKT           &kp RPAR    &kp RA(N0)     &kp LS(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOS       &none
+                                 &none              &mo 10      &skq LSHIFT    &none          &none      &mo 11
             >;
         };
 
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&none  &none     &none     &LED_DragScroll   &none          &none                                                &none  &none       &none             &none             &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHFT         &kp LCTRL      &none                                                &none        &kp LG(LC(LEFT))  &kp LG(LC(RIGHT))     &none   &none &none
-&none  &none     &none     &kp LA(LEFT)      &kp LA(RIGHT)           &none                                               &none       &none             &none  &none  &none &none 
-                           &mkp RCLK           &mkp LCLK          &LCLKx2                                       &none  &none      &none 
+&none  &none     &none     &LED_DragScroll  &none          &none      &none  &none  &none  &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHFT        &kp LCTRL      &none      &none  &none  &none  &none  &none  &none
+&none  &none     &none     &kp LA(LEFT)     &kp LA(RIGHT)  &none      &none  &none  &none  &none  &none  &none
+                           &mkp RCLK        &mkp LCLK      &LCLKx2    &none  &none  &none
             >;
         };
 
         Num_Layout_8 {
             label = "Num";
             bindings = <
-&none  &none     &none      &kp LC(LS(LA(LEFT_GUI)))  &none      &none    &none         &kp N7  &kp N8      &kp N9  &kp LNLCK  &none
+&none  &none     &none      &kp LC(LS(LA(LEFT_GUI)))  &none      &none    &none         &kp N7  &kp N8      &kp N9  &kp LNLCK        &none
 &none  &kp LALT  &kp LGUI   &kp LSHIFT                &kp LCTRL  &none    &kp KP_MINUS  &kp N4  &kp N5      &kp N6  &kp KP_DIVIDE    &none
 &none  &kp RALT  &kp GLOBE  &none                     &kp RCTRL  &none    &kp KP_PLUS   &kp N1  &kp N2      &kp N3  &kp KP_MULTIPLY  &none
                             &none                     &none      &none    &kp KP_ENTER  &kp N0  &kp KP_DOT
