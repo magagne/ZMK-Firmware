@@ -305,7 +305,7 @@
             bindings = <
                 &kp Q  &kp W  &kp F  &kp P  &kp B  &kp J  &kp L  &kp U  &kp Y  &kp RA(RIGHT_BRACKET)
                 &kp A  &kp R  &kp S  &kp T  &kp G  &kp M  &kp N  &kp E  &kp I  &kp O
-                &kp Z  &kp X  &kp C  &kp D  &kp V  &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &none  &none
+                &none  &kp Z  &kp X  &kp C  &kp D  &kp V  &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &none
                 &mo 8  &mo 1  &skq LSHIFT  &kp SPACE  &mo 2  &mo 9
             >;
         };
@@ -345,7 +345,7 @@
             bindings = <
                 &kp Q  &kp W  &kp F  &kp P  &kp B  &kp J  &kp L  &kp U  &kp Y  &kp RC(RIGHT_BRACKET)
                 &kp A  &kp R  &kp S  &kp T  &kp G  &kp M  &kp N  &kp E  &kp I  &kp O
-                &kp Z  &kp X  &kp C  &kp D  &kp V  &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &none  &none
+                &none  &kp Z  &kp X  &kp C  &kp D  &kp V  &kp K  &kp H  &kp COMMA  &kp DOT  &kp FSLH  &none
                 &mo 8  &mo 5  &skq LSHIFT  &kp SPACE  &mo 6  &mo 9
             >;
         };
