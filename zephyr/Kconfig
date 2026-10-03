@@ -1,1 +1,1 @@
-rsource "../config/Kconfig.behaviors"
+rsource "../config/common/Kconfig.behaviors"
