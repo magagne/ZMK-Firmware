@@ -333,7 +333,7 @@
             label = "Apple";
             bindings = <
 &none         &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RA(RBKT)  &none
-&kp LC(LEFT)          &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O         &kp LC(RIGHT)
+&kp LC(LEFT)  &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O         &kp LC(RIGHT)
 &kp LG(LBKT)  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH      &kp LG(RBKT)
                             &mo 8  &mo 1  &skq LSHIFT    &kp SPACE  &mo 2  &mo 9
             >;
@@ -363,8 +363,8 @@
             label = "Mouse";
             bindings = <
 &none   &none     &none     &none         &none         &none              &none  &none  &none  &none  &none  &none
-&none   &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL     &none              &none  &none  &none  &none  &none  &none
-&none  &LCLKx2   &none     &kp LG(LBKT)  &kp LG(RBKT)  &none              &none  &none  &none  &none  &none  &none
+&trans  &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL     &none              &none  &none  &none  &none  &none  &trans
+&trans  &LCLKx2   &none     &kp LG(LBKT)  &kp LG(RBKT)  &none              &none  &none  &none  &none  &none  &none
                             &mkp RCLK     &mkp LCLK     &HID_DragScroll    &none  &none  &none
             >;
         };
@@ -373,8 +373,8 @@
             label = "Windows";
             bindings = <
 &none             &kp Q  &kp W  &kp F  &kp P  &kp B          &kp J      &kp L  &kp U      &kp Y    &kp RC(RBKT)  &none
-&kp LC(LG(LEFT))             &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O         &kp LC(LG(RIGHT))
-&kp LA(LEFT)  &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH      &kp LA(RIGHT)
+&kp LC(LG(LEFT))  &kp A  &kp R  &kp S  &kp T  &kp G          &kp M      &kp N  &kp E      &kp I    &kp O         &kp LC(LG(RIGHT))
+&kp LA(LEFT)      &kp Z  &kp X  &kp C  &kp D  &kp V          &kp K      &kp H  &kp COMMA  &kp DOT  &kp FSLH      &kp LA(RIGHT)
                                 &mo 8  &mo 5  &skq LSHIFT    &kp SPACE  &mo 6  &mo 9
             >;
         };
@@ -403,8 +403,8 @@
             label = "Mouse";
             bindings = <
 &none   &none     &none     &none         &none          &none              &none  &none  &none  &none  &none  &none
-&none   &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL      &none              &none  &none  &none  &none  &none  &none
-&none &LCLKx2   &none     &kp LA(LEFT)  &kp LA(RIGHT)  &none              &none  &none  &none  &none  &none  &none
+&trans  &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL      &none              &none  &none  &none  &none  &none  &trans
+&trans  &LCLKx2   &none     &kp LA(LEFT)  &kp LA(RIGHT)  &none              &none  &none  &none  &none  &none  &trans
                             &mkp RCLK     &mkp LCLK      &LED_DragScroll    &none  &none  &none
             >;
         };
