@@ -1,100 +1,146 @@
-# Crkbd-ZMK
+# ZMK-Firmware
 
-Custom ZMK firmware configuration for the Corne keyboard.
+Custom ZMK firmware configuration for the Corne and Totem split keyboards.
 
-The configuration contains separate Mac and Windows base/Mouse layers and
-supports automatic Mouse layer activation from Ploopy Nano 2 movement.
+The repository provides separate firmware configurations for:
 
-## Auto Mouse Layer
+- **Corne-ZMK**
+- **Totem-ZMK**
 
-The keyboard-side Auto Mouse Layer controller listens to two independent
-Ploopy notification transports.
+Both configurations share the same general logical layout and pointing features, while allowing each keyboard to have its own hardware-specific configuration.
 
-### macOS — AutoMouseLayer-HID
+## Features
 
-The Ploopy sends a 32-byte Raw HID packet beginning with:
+### Mac and Windows layouts
 
-    A 01
+The firmware provides separate Mac and Windows layer sets:
 
-`Ploopy-Bridge-HID` forwards that packet from the Ploopy to the keyboard.
+| OS | Base | Extend | Symbol | Mouse |
+|---|---:|---:|---:|---:|
+| macOS | 0 | 1 | 2 | 3 |
+| Windows | 4 | 5 | 6 | 7 |
 
-The keyboard receives the Raw HID notification and activates the configured
-Mac Mouse layer.
+Additional layers are used for numeric, function, configuration, and reset functions.
 
-### Windows — AutoMouseLayer-LED
+### Auto Mouse Layer
 
-Windows does not use the Raw HID bridge for Auto Mouse Layer.
+The firmware supports automatic Mouse layer activation from Ploopy Nano-2 movement.
 
-The Ploopy generates a Caps Lock keyboard event when physical ball movement
-starts. Windows updates the Caps Lock state and sends the resulting LED state
-to the keyboard. The ZMK firmware uses that Caps Lock LED state as the
-Auto Mouse Layer signal:
+The implementation uses different notification paths depending on the operating system.
+
+#### macOS
+
+The Ploopy sends an Auto Mouse Layer notification through Raw HID.
+
+The keyboard receives the notification and activates the configured Mac Mouse layer.
+
+The Auto Mouse Layer timeout is configurable. A practical tuning range is approximately **300–700 ms**, depending on the desired balance between responsiveness and accidental layer activation.
+
+#### Windows
+
+Windows uses the Caps Lock LED state as the Auto Mouse Layer signal.
 
 - Caps Lock ON → Windows Mouse layer ON
 - Caps Lock OFF → Windows Mouse layer OFF
 
-The Windows path is state-based and does not use the normal Auto Mouse Layer
-timeout. The 450 ms timeout applies to the Raw HID/macOS path.
+This path is state-based rather than timeout-based.
 
-The LED signals are separate:
+### DragScroll
 
-- **Caps Lock** — AutoMouseLayer
+The keyboard also supports the existing Ploopy Raw HID DragScroll functionality.
+
+DragScroll is independent of Auto Mouse Layer.
+
+The LED signals are kept separate:
+
+- **Caps Lock** — Auto Mouse Layer
 - **ScrollLock** — DragScroll
 
-### Layer selection
+## Keyboard configurations
 
-The controller explicitly maps:
+### Corne
 
-| OS | Base layer | Mouse layer |
-|---|---:|---:|
-| macOS | 0 | 3 |
-| Windows | 4 | 7 |
+The Corne configuration is located in:
 
-The keyboard firmware owns the layer activation and timeout logic. It does
-not infer the operating-system layer from the highest active layer.
+    config/corne.conf
+    config/corne.keymap
+    config/corne.json
 
-If the Mouse layer was already active manually, the automatic controller
-does not claim ownership.
+The firmware name is:
 
-### Timeout
+    Corne-ZMK
 
-The current Raw HID/macOS timeout is:
+The Corne build configuration is:
 
-    CONFIG_ZMK_BEHAVIOR_AUTO_MOUSE_LAYER_TIMEOUT_MS=450
+    build/corne.yaml
 
-After the timeout expires without another Raw HID Auto Mouse Layer
-notification, the controller releases a Mouse layer that it activated itself.
+### Totem
 
-The Windows Caps Lock LED path is state-based and does not use this timeout.
+The Totem configuration is located in:
 
-## Other pointing features
+    config/totem.conf
+    config/totem.keymap
+    config/totem.json
 
-The keyboard also provides the existing Raw HID DragScroll behavior.
+The firmware name is:
 
-`DragScroll-HID` uses:
+    Totem-ZMK
 
-    S  → DragScroll ON
-    s  → DragScroll OFF
+The Totem build configuration is:
 
-DragScroll remains independent of Auto Mouse Layer.
+    build/totem.yaml
+
+The Totem configuration accounts for its different physical key geometry. The outer bottom positions that do not exist on the physical keyboard are mapped to `&none`.
 
 ## Build
 
-Firmware builds are handled by GitHub Actions using the ZMK v0.3.0 user
-configuration workflow.
+Firmware builds are handled by GitHub Actions using the ZMK v0.3.0 user configuration workflow.
 
-The repository workflow is:
+The repository uses separate workflows for each keyboard:
 
-    .github/workflows/build.yml
+    .github/workflows/build-corne.yml
+    .github/workflows/build-totem.yml
 
-The custom firmware configuration is under:
+The corresponding build matrices are:
+
+    build/corne.yaml
+    build/totem.yaml
+
+The shared configuration is located under:
+
+    config/common/
+
+The ZMK west manifest is:
+
+    config/west.yml
+
+## Repository structure
 
     config/
+    ├── common/
+    ├── corne.conf
+    ├── corne.json
+    ├── corne.keymap
+    ├── totem.conf
+    ├── totem.json
+    ├── totem.keymap
+    └── west.yml
 
-The Auto Mouse Layer implementation is:
+    build/
+    ├── corne.yaml
+    └── totem.yaml
 
-    config/src/auto_mouse_layer.c
+    .github/workflows/
+    ├── build-corne.yml
+    └── build-totem.yml
 
-The device-tree binding is:
+The Corne and Totem configurations are intentionally kept independent so that changes specific to one keyboard do not unnecessarily affect the other.
 
-    config/dts/bindings/behaviors/zmk,behavior-auto-mouse-layer.yaml
+## Firmware names
+
+The firmware names reported by ZMK are:
+
+    Corne-ZMK
+    Totem-ZMK
+
+These names identify the firmware configuration and are independent of the GitHub repository name.
