@@ -1,3 +1,9 @@
+config ZMK_BEHAVIOR_RAW_TEMPORARY_DPI
+    bool
+    default y
+    depends on DT_HAS_ZMK_BEHAVIOR_RAW_TEMPORARY_DPI_ENABLED
+    depends on RAW_HID
+
 config ZMK_BEHAVIOR_RAW_DRAG_SCROLL
     bool
     default y

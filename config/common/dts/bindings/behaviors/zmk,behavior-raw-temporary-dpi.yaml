@@ -1,0 +1,3 @@
+description: Raw HID temporary DPI offset
+compatible: "zmk,behavior-raw-temporary-dpi"
+include: zero_param.yaml

@@ -11,3 +11,10 @@ if(CONFIG_ZMK_BEHAVIOR_RAW_DRAG_SCROLL)
         ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_raw_drag_scroll.c
     )
 endif()
+
+# Temporary DPI
+if(CONFIG_ZMK_BEHAVIOR_RAW_TEMPORARY_DPI)
+    target_sources(app PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_raw_temporary_dpi.c
+    )
+endif()

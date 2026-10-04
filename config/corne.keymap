@@ -45,6 +45,11 @@
             compatible = "zmk,behavior-raw-drag-scroll";
             #binding-cells = <0>;
         };
+
+        HID_TempDPI: HID_TempDPI {
+            compatible = "zmk,behavior-raw-temporary-dpi";
+            #binding-cells = <0>;
+        };
     };
 
     combos {
@@ -306,6 +311,18 @@
                 <&macro_pause_for_release>,
                 <&macro_tap>,
                 <&kp SLCK>;
+        };
+
+        LED_TempDPI: LED_TempDPI {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            wait-ms = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp KP_NUMLOCK>,
+                <&macro_pause_for_release>,
+                <&macro_tap>,
+                <&kp KP_NUMLOCK>;
         };
     };
 
