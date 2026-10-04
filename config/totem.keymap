@@ -359,7 +359,7 @@
         Mac_Extend_Layout_1 {
             label = "Extend";
             bindings = <
-&kp LG(Z)  &kp LG(X)  &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))  &kp LG(LEFT)  &kp PG_DN  &kp PG_UP  &kp LG(RIGHT)  &kp LS(LG(N4))
+&kp LG(Z)  &kp LG(X)  &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))  &kp LG(LEFT)  &kp PG_DN  &kp PG_UP  &kp LG(RIGHT)  &kp LG(LS(N4))
 &skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &kp BSPC       &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT      &kp ESC
 &none      &skq RALT  &kp LS(TAB)  &kp TAB     &skq RCTRL     &kp RET       &kp DEL    &kp BSPC   &kp TAB        &kp INS         &kp CAPS  &none
 &none      &none      &none        &kp RET     &mo 10         &none
