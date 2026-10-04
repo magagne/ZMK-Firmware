@@ -1,4 +1,4 @@
-#define DT_DRV_COMPAT zmk_auto_mouse_layer
+#define DT_DRV_COMPAT zmk_behavior_auto_mouse_layer
 
 #include <zephyr/kernel.h>
 #include <zmk/event_manager.h>

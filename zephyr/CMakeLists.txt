@@ -1,7 +1,7 @@
 # Auto Mouse
 if(CONFIG_ZMK_BEHAVIOR_AUTO_MOUSE_LAYER)
     target_sources(app PRIVATE
-        ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/auto_mouse_layer.c
+        ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_auto_mouse_layer.c
     )
 endif()
 
