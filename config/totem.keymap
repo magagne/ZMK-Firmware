@@ -361,7 +361,7 @@
             bindings = <
 &kp LG(Z)  &kp LG(X)  &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))  &kp LG(LEFT)  &kp PG_DN  &kp PG_UP  &kp LG(RIGHT)  &kp LG(LS(N4))
 &skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &kp BSPC       &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT      &kp ESC
-&none      &skq RALT  &kp LS(TAB)  &kp TAB     &skq RCTRL     &kp RET       &kp DEL    &kp BSPC   &kp TAB        &kp INS         &kp CAPS  &none
+&none       &kp RET  &kp LS(TAB)  &kp TAB     &skq RCTRL      &none       &kp DEL    &kp BSPC   &kp TAB        &kp INS         &kp CAPS  &none
 &none      &none      &none        &kp RET     &mo 10         &none
             >;
         };
@@ -379,9 +379,9 @@
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))         &none  &none  &none  &none  &none
-&kp LALT   &kp LGUI   &kp LSHFT        &kp LCTRL     &kp BACKSPACE          &none  &none  &none  &none  &none
-&trans     &LCLKx2    &none            &none &HID_TempDPI  &kp RET   &none  &none  &none  &none  &none  &trans
+&none  &none  &none  &none  &none        &none  &none  &none  &none  &none
+&kp LALT   &kp LGUI   &kp LSHFT        &kp LCTRL     &none           &none  &none  &none  &none  &none
+&trans     &LCLKx2    &none            &none &HID_TempDPI  &none    &none  &none  &none  &none  &none  &trans
 &mkp RCLK  &mkp LCLK  &HID_DragScroll  &none         &none         &none
             >;
         };
@@ -401,7 +401,7 @@
             bindings = <
 &kp LC(Z)  &kp LC(X)  &kp LC(C)    &kp LC(V)   &kp LC(Y)   &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &kp PRINTSCREEN
 &skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &kp BSPC    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp ESC
-&none      &skq RALT  &kp LS(TAB)  &kp TAB     &skq RCTRL  &kp RET   &kp DEL    &kp BSPC   &kp TAB    &kp INS          &kp CAPS  &none
+&none       &kp RET  &kp LS(TAB)  &kp TAB     &skq RCTRL   &none   &kp DEL    &kp BSPC   &kp TAB    &kp INS          &kp CAPS  &none
 &none      &none      &none        &kp RET     &mo 10      &none
             >;
         };
@@ -419,9 +419,9 @@
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)          &none  &none  &none  &none  &none
-&kp LALT   &kp LGUI   &kp LSHFT        &kp LCTRL    &kp BACKSPACE          &none  &none  &none  &none  &none
-&trans     &LCLKx2    &none            &none &LED_TempDPI  &kp RET  &none  &none  &none  &none  &none  &trans
+&none  &none  &none  &none  &none          &none  &none  &none  &none  &none
+&kp LALT   &kp LGUI   &kp LSHFT        &kp LCTRL    &none           &none  &none  &none  &none  &none
+&trans     &LCLKx2    &none            &none &LED_TempDPI  &none   &none  &none  &none  &none  &none  &trans
 &mkp RCLK  &mkp LCLK  &LED_DragScroll  &none         &none          &none
             >;
         };
