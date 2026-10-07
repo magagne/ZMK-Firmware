@@ -379,10 +379,10 @@
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&none  &kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))              &none  &none  &none  &none  &none  &none
-&trans  &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL     &none              &none  &none  &none  &none  &none  &trans
-&trans  &LCLKx2   &none      &none &HID_TempDPI  &none              &none  &none  &none  &none  &none  &trans
-                            &mkp RCLK     &mkp LCLK     &HID_DragScroll    &none  &none  &none
+&none   &kp LG(Z)  &kp LG(X)  &kp LG(C)  &kp LG(V)     &kp LG(LS(Z))      &none  &none  &none  &none  &none  &none
+&trans  &kp LALT   &kp LGUI   &kp LSHFT  &kp LCTRL     &kp BACKSPACE      &none  &none  &none  &none  &none  &trans
+&trans  &LCLKx2    &none      &none      &HID_TempDPI  &kp RET            &none  &none  &none  &none  &none  &trans
+                              &mkp RCLK  &mkp LCLK     &HID_DragScroll    &none  &none  &none
             >;
         };
 
@@ -419,10 +419,10 @@
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&none  &kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)              &none  &none  &none  &none  &none  &none
-&trans  &kp LALT  &kp LGUI  &kp LSHFT     &kp LCTRL      &none              &none  &none  &none  &none  &none  &trans
-&trans  &LCLKx2   &none     &none &LED_TempDPI  &none              &none  &none  &none  &none  &none  &trans
-                            &mkp RCLK     &mkp LCLK      &LED_DragScroll    &none  &none  &none
+&none   &kp LC(Z)  &kp LC(X)  &kp LC(C)  &kp LC(V)     &kp LC(Y)          &none  &none  &none  &none  &none  &none
+&trans  &kp LALT   &kp LGUI   &kp LSHFT  &kp LCTRL     &kp BACKSPACE      &none  &none  &none  &none  &none  &trans
+&trans  &LCLKx2    &none      &none      &LED_TempDPI  &kp RET            &none  &none  &none  &none  &none  &trans
+                              &mkp RCLK  &mkp LCLK     &LED_DragScroll    &none  &none  &none
             >;
         };
 
