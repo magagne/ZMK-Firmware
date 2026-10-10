@@ -173,3 +173,5 @@ static int led_auto_mouse_layer_listener(const zmk_event_t *eh) {
 
 ZMK_LISTENER(led_auto_mouse_layer, led_auto_mouse_layer_listener);
 ZMK_SUBSCRIPTION(led_auto_mouse_layer, zmk_hid_indicators_changed);
+
+/* Build trigger: verify GitHub Actions firmware workflow. */
