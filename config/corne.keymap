@@ -379,10 +379,10 @@
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&none  &none     &none         &HID_DragScroll  &kp LCTRL  &none    &none  &none         &none         &none  &none  &none
-&none  &kp LALT  &LED_TempDPI  &kp LSHFT        &mkp LCLK  &none    &none  &kp LG(LBKT)  &kp LG(RBKT)  &none  &none  &none
-&none  &none     &none         &mkp RCLK        &LCLKx2    &none    &none  &none         &none         &none  &none  &none
-                               &none            &none      &none    &none  &none         &none
+&none  &none     &none         &HID_DragScroll  &kp LCTRL  &none        &none  &none         &none         &none  &none  &none
+&none  &kp LALT  &LED_TempDPI  &kp LSHFT        &mkp LCLK  &mkp RCLK    &none  &kp LG(LBKT)  &kp LG(RBKT)  &none  &none  &none
+&none  &none     &none         &none            &LCLKx2    &none        &none  &none         &none         &none  &none  &none
+                               &none            &none      &none        &none  &none         &none
             >;
         };
 
@@ -419,10 +419,10 @@
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&none  &none     &none         &LED_DragScroll  &kp LCTRL  &none    &none  &none         &none          &none  &none  &none
-&none  &kp LALT  &LED_TempDPI  &kp LSHFT        &mkp LCLK  &none    &none  &kp LA(LEFT)  &kp LA(RIGHT)  &none  &none  &none
-&none  &none     &none         &mkp RCLK        &LCLKx2    &none    &none  &none         &none          &none  &none  &none
-                               &none            &none      &none    &none  &none         &none
+&none  &none     &none         &LED_DragScroll  &kp LCTRL  &none        &none  &none         &none          &none  &none  &none
+&none  &kp LALT  &LED_TempDPI  &kp LSHFT        &mkp LCLK  &mkp RCLK    &none  &kp LA(LEFT)  &kp LA(RIGHT)  &none  &none  &none
+&none  &none     &none         &none            &LCLKx2    &none        &none  &none         &none          &none  &none  &none
+                               &none            &none      &none        &none  &none         &none
             >;
         };
 
