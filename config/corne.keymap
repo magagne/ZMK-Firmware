@@ -117,8 +117,8 @@
 
         Combo_Unlock {
             bindings = <&studio_unlock>;
-            key-positions = <10 1>;
-            layers = <0 4>;
+            key-positions = <25>;
+            layers = <11>;
         };
     };
 
