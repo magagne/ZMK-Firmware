@@ -8,7 +8,7 @@
 #include <zmk/hid_indicators.h>
 #include <zmk/events/layer_state_changed.h>
 #include <zephyr/sys/util.h>
-#include "behavior_manual_mouse_layer.h"
+#include "behavior_mouse_layer.h"
 
 #define PLOOPY_AUTO_MOUSE_LAYER 0x41
 #define PLOOPY_AUTO_MOUSE_LAYER_VERSION 0x01
@@ -31,10 +31,10 @@ static const struct auto_mouse_layer_config cfg = {
 
 /* Each activation source has its own request. Never let one source release another's layer. */
 static bool mac_auto_requested;
-static bool mac_manual_held;
-static bool mac_manual_latched;
-static bool windows_manual_held;
-static bool windows_manual_latched;
+static bool mac_mouse_layer_hold_requested;
+static bool mac_mouse_layer_latch_requested;
+static bool windows_mouse_layer_hold_requested;
+static bool windows_mouse_layer_latch_requested;
 static bool windows_caps_known;
 static bool windows_caps_on;
 /* An explicit layer exit wins over a stale cached Caps-on state until Caps changes. */
@@ -76,11 +76,11 @@ static void reconcile(void) {
     bool windows_base = zmk_keymap_layer_active(cfg.windows_base_layer);
     bool mac_base = zmk_keymap_layer_active(cfg.mac_base_layer);
     bool mac_requested = mac_base && !windows_base &&
-        (mac_auto_requested || mac_manual_held || mac_manual_latched);
+        (mac_auto_requested || mac_mouse_layer_hold_requested || mac_mouse_layer_latch_requested);
     bool windows_caps_requested = windows_base && windows_caps_known &&
         windows_caps_on && !windows_caps_suppressed;
     bool windows_requested = windows_base &&
-        (windows_caps_requested || windows_manual_held || windows_manual_latched);
+        (windows_caps_requested || windows_mouse_layer_hold_requested || windows_mouse_layer_latch_requested);
 
     reconcile_layer(cfg.mac_mouse_layer, mac_requested, &mac_layer_owned);
     reconcile_layer(cfg.windows_mouse_layer, windows_requested, &windows_layer_owned);
@@ -93,17 +93,17 @@ static void auto_timeout(struct k_work *work) {
 }
 K_WORK_DELAYABLE_DEFINE(auto_timeout_work, auto_timeout);
 
-void behavior_manual_mouse_layer_update(zmk_keymap_layer_id_t layer, bool pressed) {
+void behavior_hold_mouse_layer_update(zmk_keymap_layer_id_t layer, bool pressed) {
     if (layer == cfg.mac_mouse_layer) {
         if (pressed) {
             /* The same N position exits a persistent latch; the transient hold keeps
              * the layer alive only until this key is released. */
-            mac_manual_latched = false;
-            mac_manual_held = true;
+            mac_mouse_layer_latch_requested = false;
+            mac_mouse_layer_hold_requested = true;
             mac_auto_requested = false;
             k_work_cancel_delayable(&auto_timeout_work);
         } else {
-            mac_manual_held = false;
+            mac_mouse_layer_hold_requested = false;
         }
     } else if (layer == cfg.windows_mouse_layer) {
         if (pressed) {
@@ -111,23 +111,23 @@ void behavior_manual_mouse_layer_update(zmk_keymap_layer_id_t layer, bool presse
              * key. Suppress the still-on Caps request before reconciliation, otherwise
              * the cached Caps state would immediately keep the layer active. */
             windows_caps_suppressed = true;
-            windows_manual_latched = false;
-            windows_manual_held = true;
+            windows_mouse_layer_latch_requested = false;
+            windows_mouse_layer_hold_requested = true;
         } else {
-            windows_manual_held = false;
+            windows_mouse_layer_hold_requested = false;
         }
     }
     reconcile();
 }
 
-/* Hold side of N_MouseLayer_*: persist until the mouse layer is explicitly exited. */
-void behavior_manual_mouse_layer_latch(zmk_keymap_layer_id_t layer) {
+/* Hold side of N_LatchMouseLayer*: persist until the mouse layer is explicitly exited. */
+void behavior_latch_mouse_layer_set(zmk_keymap_layer_id_t layer) {
     if (layer == cfg.mac_mouse_layer) {
-        mac_manual_latched = true;
+        mac_mouse_layer_latch_requested = true;
         mac_auto_requested = false;
         k_work_cancel_delayable(&auto_timeout_work);
     } else if (layer == cfg.windows_mouse_layer) {
-        windows_manual_latched = true;
+        windows_mouse_layer_latch_requested = true;
     }
     reconcile();
 }
@@ -172,8 +172,8 @@ static int layer_auto_mouse_layer_listener(const zmk_event_t *eh) {
         /* Clear stale Mac requests and initialize Caps state from the
          * currently selected host profile's cached HID indicators. */
         mac_auto_requested = false;
-        mac_manual_held = false;
-        mac_manual_latched = false;
+        mac_mouse_layer_hold_requested = false;
+        mac_mouse_layer_latch_requested = false;
         k_work_cancel_delayable(&auto_timeout_work);
         windows_caps_on =
             (zmk_hid_indicators_get_current_profile() &
@@ -182,8 +182,8 @@ static int layer_auto_mouse_layer_listener(const zmk_event_t *eh) {
         windows_caps_suppressed = false;
     }
     if (event->layer == cfg.windows_base_layer && !event->state) {
-        windows_manual_held = false;
-        windows_manual_latched = false;
+        windows_mouse_layer_hold_requested = false;
+        windows_mouse_layer_latch_requested = false;
         windows_caps_known = false;
         windows_caps_on = false;
         windows_caps_suppressed = false;
@@ -191,8 +191,8 @@ static int layer_auto_mouse_layer_listener(const zmk_event_t *eh) {
     if (event->layer == cfg.mac_mouse_layer && !event->state) {
         /* An explicit deactivation clears stale Mac requests. */
         mac_auto_requested = false;
-        mac_manual_held = false;
-        mac_manual_latched = false;
+        mac_mouse_layer_hold_requested = false;
+        mac_mouse_layer_latch_requested = false;
         k_work_cancel_delayable(&auto_timeout_work);
     }
     if (event->layer == cfg.windows_mouse_layer && !event->state) {
@@ -201,8 +201,8 @@ static int layer_auto_mouse_layer_listener(const zmk_event_t *eh) {
         if (zmk_keymap_layer_active(cfg.windows_base_layer)) {
             windows_caps_suppressed = true;
         }
-        windows_manual_held = false;
-        windows_manual_latched = false;
+        windows_mouse_layer_hold_requested = false;
+        windows_mouse_layer_latch_requested = false;
     }
 
     reconcile();
