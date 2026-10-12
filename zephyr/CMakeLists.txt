@@ -5,6 +5,14 @@ if(CONFIG_ZMK_BEHAVIOR_AUTO_MOUSE_LAYER)
     )
 endif()
 
+# Manual Mouse Layer
+if(CONFIG_ZMK_BEHAVIOR_MANUAL_MOUSE_LAYER)
+    target_sources(app PRIVATE
+        ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_manual_mouse_layer.c
+        ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_manual_mouse_layer_latch.c
+    )
+endif()
+
 # Drag Scroll
 if(CONFIG_ZMK_BEHAVIOR_RAW_DRAG_SCROLL)
     target_sources(app PRIVATE

@@ -5,11 +5,14 @@
 #include <zmk/keymap.h>
 #include <raw_hid/events.h>
 #include <zmk/events/hid_indicators_changed.h>
+#include <zmk/hid_indicators.h>
+#include <zmk/events/layer_state_changed.h>
 #include <zephyr/sys/util.h>
+#include "behavior_manual_mouse_layer.h"
 
-#define PLOOPY_AUTO_MOUSE_LAYER         0x41
+#define PLOOPY_AUTO_MOUSE_LAYER 0x41
 #define PLOOPY_AUTO_MOUSE_LAYER_VERSION 0x01
-#define PLOOPY_CAPS_LOCK_INDICATOR    BIT(1)
+#define PLOOPY_CAPS_LOCK_INDICATOR BIT(1)
 
 struct auto_mouse_layer_config {
     zmk_keymap_layer_id_t mac_base_layer;
@@ -19,159 +22,213 @@ struct auto_mouse_layer_config {
 };
 
 #define AUTO_MOUSE_LAYER_CONFIG DT_PATH(behaviors, auto_mouse_layer_config)
-
-static const struct auto_mouse_layer_config auto_mouse_layer_config = {
+static const struct auto_mouse_layer_config cfg = {
     .mac_base_layer = DT_PROP(AUTO_MOUSE_LAYER_CONFIG, mac_base_layer),
     .mac_mouse_layer = DT_PROP(AUTO_MOUSE_LAYER_CONFIG, mac_mouse_layer),
     .windows_base_layer = DT_PROP(AUTO_MOUSE_LAYER_CONFIG, windows_base_layer),
     .windows_mouse_layer = DT_PROP(AUTO_MOUSE_LAYER_CONFIG, windows_mouse_layer),
 };
 
-static bool auto_mouse_layer_active;
-static zmk_keymap_layer_id_t auto_mouse_layer;
+/* Each activation source has its own request. Never let one source release another's layer. */
+static bool mac_auto_requested;
+static bool mac_manual_held;
+static bool mac_manual_latched;
+static bool windows_manual_held;
+static bool windows_manual_latched;
+static bool windows_caps_known;
+static bool windows_caps_on;
+/* An explicit layer exit wins over a stale cached Caps-on state until Caps changes. */
+static bool windows_caps_suppressed;
+static bool mac_layer_owned;
+static bool windows_layer_owned;
+/* ZMK v0.3.0 dispatches layer-state listeners synchronously from the layer API.
+ * This guard identifies callbacks caused by this controller, preventing them from
+ * being misinterpreted as user-requested exits during reentrant event dispatch. */
+static unsigned int controller_layer_change_depth;
 
+static void reconcile_layer(zmk_keymap_layer_id_t layer, bool requested, bool *owned) {
+    bool active = zmk_keymap_layer_active(layer);
+    if (requested) {
+        if (!active) {
+            controller_layer_change_depth++;
+            int rc = zmk_keymap_layer_activate(layer);
+            controller_layer_change_depth--;
+            if (rc == 0) {
+                *owned = true;
+            }
+        }
+        /* All configured layer-3/7 request paths are routed through this controller. */
+        return;
+    }
+    if (*owned && active) {
+        controller_layer_change_depth++;
+        int rc = zmk_keymap_layer_deactivate(layer);
+        controller_layer_change_depth--;
+        if (rc == 0) {
+            *owned = false;
+        }
+        return;
+    }
+    *owned = false;
+}
 
-static void auto_mouse_layer_timeout(struct k_work *work);
+static void reconcile(void) {
+    bool windows_base = zmk_keymap_layer_active(cfg.windows_base_layer);
+    bool mac_base = zmk_keymap_layer_active(cfg.mac_base_layer);
+    bool mac_requested = mac_base && !windows_base &&
+        (mac_auto_requested || mac_manual_held || mac_manual_latched);
+    bool windows_caps_requested = windows_base && windows_caps_known &&
+        windows_caps_on && !windows_caps_suppressed;
+    bool windows_requested = windows_base &&
+        (windows_caps_requested || windows_manual_held || windows_manual_latched);
 
-K_WORK_DELAYABLE_DEFINE(
-    auto_mouse_layer_timeout_work,
-    auto_mouse_layer_timeout
-);
-static void auto_mouse_layer_timeout(struct k_work *work) {
+    reconcile_layer(cfg.mac_mouse_layer, mac_requested, &mac_layer_owned);
+    reconcile_layer(cfg.windows_mouse_layer, windows_requested, &windows_layer_owned);
+}
+
+static void auto_timeout(struct k_work *work) {
     ARG_UNUSED(work);
-
-    if (!auto_mouse_layer_active) {
-        return;
-    }
-
-    if (zmk_keymap_layer_active(auto_mouse_layer)) {
-        zmk_keymap_layer_deactivate(auto_mouse_layer);
-    }
-
-    auto_mouse_layer_active = false;
+    mac_auto_requested = false;
+    reconcile();
 }
+K_WORK_DELAYABLE_DEFINE(auto_timeout_work, auto_timeout);
 
-static zmk_keymap_layer_id_t get_auto_mouse_layer(void) {
-    if (zmk_keymap_layer_active(auto_mouse_layer_config.windows_base_layer)) {
-        return auto_mouse_layer_config.windows_mouse_layer;
-    }
-
-    if (zmk_keymap_layer_active(auto_mouse_layer_config.mac_base_layer)) {
-        return auto_mouse_layer_config.mac_mouse_layer;
-    }
-
-    return ZMK_KEYMAP_LAYER_ID_INVAL;
-}
-
-static void activate_auto_mouse_layer(void) {
-    zmk_keymap_layer_id_t target = get_auto_mouse_layer();
-
-    if (target == ZMK_KEYMAP_LAYER_ID_INVAL) {
-        return;
-    }
-
-    if (auto_mouse_layer_active && auto_mouse_layer != target) {
-        if (zmk_keymap_layer_active(auto_mouse_layer)) {
-            zmk_keymap_layer_deactivate(auto_mouse_layer);
+void behavior_manual_mouse_layer_update(zmk_keymap_layer_id_t layer, bool pressed) {
+    if (layer == cfg.mac_mouse_layer) {
+        if (pressed) {
+            /* The same N position exits a persistent latch; the transient hold keeps
+             * the layer alive only until this key is released. */
+            mac_manual_latched = false;
+            mac_manual_held = true;
+            mac_auto_requested = false;
+            k_work_cancel_delayable(&auto_timeout_work);
+        } else {
+            mac_manual_held = false;
         }
-
-        auto_mouse_layer_active = false;
-    }
-
-    /*
-     * If the Mouse layer is already active, it was not activated
-     * by this controller. Leave it alone and do not claim ownership.
-     */
-    if (!zmk_keymap_layer_active(target)) {
-        if (zmk_keymap_layer_activate(target) == 0) {
-            auto_mouse_layer = target;
-            auto_mouse_layer_active = true;
+    } else if (layer == cfg.windows_mouse_layer) {
+        if (pressed) {
+            /* This behavior is bound on the Windows Mouse layer as its explicit exit
+             * key. Suppress the still-on Caps request before reconciliation, otherwise
+             * the cached Caps state would immediately keep the layer active. */
+            windows_caps_suppressed = true;
+            windows_manual_latched = false;
+            windows_manual_held = true;
+        } else {
+            windows_manual_held = false;
         }
     }
+    reconcile();
+}
 
-    k_work_reschedule(
-        &auto_mouse_layer_timeout_work,
-        K_MSEC(CONFIG_ZMK_BEHAVIOR_AUTO_MOUSE_LAYER_TIMEOUT_MS)
-    );
+/* Hold side of N_MouseLayer_*: persist until the mouse layer is explicitly exited. */
+void behavior_manual_mouse_layer_latch(zmk_keymap_layer_id_t layer) {
+    if (layer == cfg.mac_mouse_layer) {
+        mac_manual_latched = true;
+        mac_auto_requested = false;
+        k_work_cancel_delayable(&auto_timeout_work);
+    } else if (layer == cfg.windows_mouse_layer) {
+        windows_manual_latched = true;
+    }
+    reconcile();
 }
 
 static int hid_auto_mouse_layer_listener(const zmk_event_t *eh) {
-    struct raw_hid_received_event *event =
-        as_raw_hid_received_event(eh);
-
-    if (!event || event->length < 2) {
-        return ZMK_EV_EVENT_BUBBLE;
-    }
-
-    if (event->data[0] != PLOOPY_AUTO_MOUSE_LAYER ||
+    struct raw_hid_received_event *event = as_raw_hid_received_event(eh);
+    if (!event || event->length < 2 ||
+        event->data[0] != PLOOPY_AUTO_MOUSE_LAYER ||
         event->data[1] != PLOOPY_AUTO_MOUSE_LAYER_VERSION) {
         return ZMK_EV_EVENT_BUBBLE;
     }
 
-    activate_auto_mouse_layer();
-
+    /* The timed Raw-HID auto path is Mac-only; Windows uses cached Caps state. */
+    if (!zmk_keymap_layer_active(cfg.windows_base_layer) &&
+        zmk_keymap_layer_active(cfg.mac_base_layer)) {
+        mac_auto_requested = true;
+        k_work_reschedule(&auto_timeout_work,
+            K_MSEC(CONFIG_ZMK_BEHAVIOR_AUTO_MOUSE_LAYER_TIMEOUT_MS));
+        reconcile();
+    }
     return ZMK_EV_EVENT_BUBBLE;
 }
-
 ZMK_LISTENER(hid_auto_mouse_layer, hid_auto_mouse_layer_listener);
 ZMK_SUBSCRIPTION(hid_auto_mouse_layer, raw_hid_received_event);
 
-static int led_auto_mouse_layer_listener(const zmk_event_t *eh) {
-    const struct zmk_hid_indicators_changed *event =
-        as_zmk_hid_indicators_changed(eh);
-
+static int layer_auto_mouse_layer_listener(const zmk_event_t *eh) {
+    const struct zmk_layer_state_changed *event = as_zmk_layer_state_changed(eh);
     if (!event) {
         return ZMK_EV_EVENT_BUBBLE;
     }
 
-    if (!zmk_keymap_layer_active(auto_mouse_layer_config.windows_base_layer)) {
+    /* zmk_keymap_layer_activate/deactivate raises this event synchronously at the
+     * pinned ZMK revision. Ignore our own mouse-layer notifications here: they are
+     * implementation effects of reconcile(), not an independent exit request. */
+    if (controller_layer_change_depth > 0 &&
+        (event->layer == cfg.mac_mouse_layer ||
+         event->layer == cfg.windows_mouse_layer)) {
         return ZMK_EV_EVENT_BUBBLE;
     }
 
-    bool caps_on =
-        (event->indicators & PLOOPY_CAPS_LOCK_INDICATOR) != 0;
-
-    /*
-     * Windows Auto Mouse is state-based:
-     *
-     *   Caps ON  -> Windows Mouse layer ON
-     *   Caps OFF -> Windows Mouse layer OFF
-     *
-     * Do not use the normal Auto Mouse timeout here.
-     * The 450 ms timeout belongs to the Raw HID/Mac path.
-     */
-    if (caps_on) {
-        k_work_cancel_delayable(&auto_mouse_layer_timeout_work);
-
-        if (!zmk_keymap_layer_active(
-                auto_mouse_layer_config.windows_mouse_layer)) {
-            if (zmk_keymap_layer_activate(
-                    auto_mouse_layer_config.windows_mouse_layer) == 0) {
-                auto_mouse_layer =
-                    auto_mouse_layer_config.windows_mouse_layer;
-                auto_mouse_layer_active = true;
-            }
+    if (event->layer == cfg.windows_base_layer && event->state) {
+        /* Clear stale Mac requests and initialize Caps state from the
+         * currently selected host profile's cached HID indicators. */
+        mac_auto_requested = false;
+        mac_manual_held = false;
+        mac_manual_latched = false;
+        k_work_cancel_delayable(&auto_timeout_work);
+        windows_caps_on =
+            (zmk_hid_indicators_get_current_profile() &
+             PLOOPY_CAPS_LOCK_INDICATOR) != 0;
+        windows_caps_known = true;
+        windows_caps_suppressed = false;
+    }
+    if (event->layer == cfg.windows_base_layer && !event->state) {
+        windows_manual_held = false;
+        windows_manual_latched = false;
+        windows_caps_known = false;
+        windows_caps_on = false;
+        windows_caps_suppressed = false;
+    }
+    if (event->layer == cfg.mac_mouse_layer && !event->state) {
+        /* An explicit deactivation clears stale Mac requests. */
+        mac_auto_requested = false;
+        mac_manual_held = false;
+        mac_manual_latched = false;
+        k_work_cancel_delayable(&auto_timeout_work);
+    }
+    if (event->layer == cfg.windows_mouse_layer && !event->state) {
+        /* The layer may have been exited explicitly while cached Caps was still on.
+         * Suppress that stale request until a genuine Caps state change or OS re-entry. */
+        if (zmk_keymap_layer_active(cfg.windows_base_layer)) {
+            windows_caps_suppressed = true;
         }
-    } else {
-        k_work_cancel_delayable(&auto_mouse_layer_timeout_work);
-
-        if (auto_mouse_layer_active &&
-            auto_mouse_layer ==
-                auto_mouse_layer_config.windows_mouse_layer &&
-            zmk_keymap_layer_active(auto_mouse_layer)) {
-            zmk_keymap_layer_deactivate(auto_mouse_layer);
-        }
-
-        if (auto_mouse_layer ==
-            auto_mouse_layer_config.windows_mouse_layer) {
-            auto_mouse_layer_active = false;
-        }
+        windows_manual_held = false;
+        windows_manual_latched = false;
     }
 
+    reconcile();
     return ZMK_EV_EVENT_BUBBLE;
 }
+ZMK_LISTENER(layer_auto_mouse_layer, layer_auto_mouse_layer_listener);
+ZMK_SUBSCRIPTION(layer_auto_mouse_layer, zmk_layer_state_changed);
 
+static int led_auto_mouse_layer_listener(const zmk_event_t *eh) {
+    const struct zmk_hid_indicators_changed *event = as_zmk_hid_indicators_changed(eh);
+    if (!event) {
+        return ZMK_EV_EVENT_BUBBLE;
+    }
+
+    /* Cache only while Windows is selected. After a host-profile switch, require a
+     * fresh indicator event rather than reusing potentially stale Caps state. */
+    if (zmk_keymap_layer_active(cfg.windows_base_layer)) {
+        bool next_caps_on = (event->indicators & PLOOPY_CAPS_LOCK_INDICATOR) != 0;
+        if (!windows_caps_known || next_caps_on != windows_caps_on) {
+            windows_caps_suppressed = false;
+        }
+        windows_caps_known = true;
+        windows_caps_on = next_caps_on;
+        reconcile();
+    }
+    return ZMK_EV_EVENT_BUBBLE;
+}
 ZMK_LISTENER(led_auto_mouse_layer, led_auto_mouse_layer_listener);
 ZMK_SUBSCRIPTION(led_auto_mouse_layer, zmk_hid_indicators_changed);
-
-/* Build trigger: verify GitHub Actions firmware workflow. */

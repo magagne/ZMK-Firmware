@@ -1,0 +1,3 @@
+description: Persistent manual mouse-layer request set by the hold action
+compatible: "zmk,behavior-manual-mouse-layer-latch"
+include: one_param.yaml

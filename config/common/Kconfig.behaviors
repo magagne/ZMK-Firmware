@@ -25,3 +25,9 @@ config ZMK_BEHAVIOR_AUTO_MOUSE_LAYER_TIMEOUT_MS
     help
       Time in milliseconds after the last Ploopy AutoMouseLayer notification
       before the automatically activated Mouse layer is released.
+
+config ZMK_BEHAVIOR_MANUAL_MOUSE_LAYER
+    bool
+    default y
+    depends on DT_HAS_ZMK_BEHAVIOR_MANUAL_MOUSE_LAYER_ENABLED
+    depends on ZMK_BEHAVIOR_AUTO_MOUSE_LAYER
