@@ -96,8 +96,6 @@ K_WORK_DELAYABLE_DEFINE(auto_timeout_work, auto_timeout);
 void behavior_hold_mouse_layer_update(zmk_keymap_layer_id_t layer, bool pressed) {
     if (layer == cfg.mac_mouse_layer) {
         if (pressed) {
-            /* The same N position exits a persistent latch; the transient hold keeps
-             * the layer alive only until this key is released. */
             mac_mouse_layer_latch_requested = false;
             mac_mouse_layer_hold_requested = true;
             mac_auto_requested = false;
@@ -107,9 +105,6 @@ void behavior_hold_mouse_layer_update(zmk_keymap_layer_id_t layer, bool pressed)
         }
     } else if (layer == cfg.windows_mouse_layer) {
         if (pressed) {
-            /* This behavior is bound on the Windows Mouse layer as its explicit exit
-             * key. Suppress the still-on Caps request before reconciliation, otherwise
-             * the cached Caps state would immediately keep the layer active. */
             windows_caps_suppressed = true;
             windows_mouse_layer_latch_requested = false;
             windows_mouse_layer_hold_requested = true;
