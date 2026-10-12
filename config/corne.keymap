@@ -33,22 +33,56 @@
             ignore-modifiers;
         };
 
-        hold_mouse_layer: HoldMouseLayer {
+        hold_mouse_layer_mac: HoldMouseLayerMac {
             compatible = "zmk,behavior-hold-mouse-layer";
-            #binding-cells = <1>;
+            #binding-cells = <0>;
+            mouse-layer = <3>;
         };
 
-        latch_mouse_layer: LatchMouseLayer {
+        hold_mouse_layer_win: HoldMouseLayerWin {
+            compatible = "zmk,behavior-hold-mouse-layer";
+            #binding-cells = <0>;
+            mouse-layer = <7>;
+        };
+
+        latch_mouse_layer_mac: LatchMouseLayerMac {
             compatible = "zmk,behavior-latch-mouse-layer";
-            #binding-cells = <1>;
+            #binding-cells = <0>;
+            mouse-layer = <3>;
         };
 
-        kp_or_LatchMouseLayer: kp_or_LatchMouseLayer {
+        latch_mouse_layer_win: LatchMouseLayerWin {
+            compatible = "zmk,behavior-latch-mouse-layer";
+            #binding-cells = <0>;
+            mouse-layer = <7>;
+        };
+
+        kp_or_LatchMouseLayer_mac_inner: KpOrLatchMouseLayerMacInner {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
             flavor = "tap-preferred";
-            bindings = <&latch_mouse_layer>, <&kp>;
+            bindings = <&latch_mouse_layer_mac>, <&kp>;
+        };
+
+        kp_or_LatchMouseLayer_win_inner: KpOrLatchMouseLayerWinInner {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&latch_mouse_layer_win>, <&kp>;
+        };
+
+        kp_or_LatchMouseLayer_mac: KpOrLatchMouseLayerMac {
+            compatible = "zmk,behavior-kp-or-latch-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_LatchMouseLayer_mac_inner>;
+        };
+
+        kp_or_LatchMouseLayer_win: KpOrLatchMouseLayerWin {
+            compatible = "zmk,behavior-kp-or-latch-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_LatchMouseLayer_win_inner>;
         };
 
         auto_mouse_layer_config {
@@ -362,7 +396,7 @@
             label = "Apple";
             bindings = <
 &none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RA(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer 3 N  &kp E      &kp I    &kp O         &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer_mac N  &kp E      &kp I    &kp O         &none
 &none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                       &kp COMMA  &kp DOT  &kp FSLH      &none
                      &mo 8  &mo 1  &skq LSHFT    &kp SPACE  &mo 2                       &mo 9
             >;
@@ -392,8 +426,8 @@
             label = "Mouse";
             bindings = <
 &none  &none     &none         &HID_DragScroll  &none      &none      &none  &none               &none         &none  &none  &none
-&none  &kp LALT  &HID_TempDPI  &kp LSHFT        &kp LCTRL  &kp DEL    &none  &latch_mouse_layer 3  &none         &none  &to 0  &none
-&none  &kp RET   &kp LS(TAB)   &kp TAB          &none      &none      &none  &hold_mouse_layer 3   &none         &none  &none  &none
+&none  &kp LALT  &HID_TempDPI  &kp LSHFT        &kp LCTRL  &kp DEL    &none  &latch_mouse_layer_mac  &none         &none  &to 0  &none
+&none  &kp RET   &kp LS(TAB)   &kp TAB          &none      &none      &none  &hold_mouse_layer_mac   &none         &none  &none  &none
                                &mkp RCLK        &mkp LCLK  &LCLKx2    &none  &kp LG(LBKT)        &kp LG(RBKT)
             >;
         };
@@ -402,7 +436,7 @@
             label = "Windows";
             bindings = <
 &none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RC(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer 7 N  &kp E      &kp I    &kp O         &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer_win N  &kp E      &kp I    &kp O         &none
 &none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                       &kp COMMA  &kp DOT  &kp FSLH      &none
                      &mo 8  &mo 5  &skq LSHFT    &kp SPACE  &mo 6                       &mo 9
             >;
@@ -432,8 +466,8 @@
             label = "Mouse";
             bindings = <
 &none  &none     &none         &LED_DragScroll  &none      &none      &none  &none               &none          &none  &none  &none
-&none  &kp LALT  &LED_TempDPI  &kp LSHFT        &kp LCTRL  &kp DEL    &none  &latch_mouse_layer 7  &none          &none  &to 4  &none
-&none  &kp RET   &kp LS(TAB)   &kp TAB          &none      &none      &none  &hold_mouse_layer 7   &none          &none  &none  &none
+&none  &kp LALT  &LED_TempDPI  &kp LSHFT        &kp LCTRL  &kp DEL    &none  &latch_mouse_layer_win  &none          &none  &to 4  &none
+&none  &kp RET   &kp LS(TAB)   &kp TAB          &none      &none      &none  &hold_mouse_layer_win   &none          &none  &none  &none
                                &mkp RCLK        &mkp LCLK  &LCLKx2    &none  &kp LA(LEFT)        &kp LA(RIGHT)
             >;
         };

@@ -1,3 +1,8 @@
 description: Manually held mouse-layer request coordinated with automatic activation
 compatible: "zmk,behavior-hold-mouse-layer"
-include: one_param.yaml
+include: zero_param.yaml
+
+properties:
+  mouse-layer:
+    type: int
+    required: true
