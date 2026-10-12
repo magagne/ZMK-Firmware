@@ -43,15 +43,7 @@
             #binding-cells = <1>;
         };
 
-        N_LatchMouseLayer_mac: N_LatchMouseLayer_mac {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            tapping-term-ms = <200>;
-            flavor = "tap-preferred";
-            bindings = <&latch_mouse_layer>, <&kp>;
-        };
-
-        N_LatchMouseLayer_win: N_LatchMouseLayer_win {
+        kp_or_LatchMouseLayer: kp_or_LatchMouseLayer {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             tapping-term-ms = <200>;
@@ -370,7 +362,7 @@
             label = "Apple";
             bindings = <
 &none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RA(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &N_LatchMouseLayer_mac 0 N  &kp E      &kp I    &kp O         &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer 3 N  &kp E      &kp I    &kp O         &none
 &none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                       &kp COMMA  &kp DOT  &kp FSLH      &none
                      &mo 8  &mo 1  &skq LSHFT    &kp SPACE  &mo 2                       &mo 9
             >;
@@ -410,7 +402,7 @@
             label = "Windows";
             bindings = <
 &none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RC(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &N_LatchMouseLayer_win 7 N  &kp E      &kp I    &kp O         &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer 7 N  &kp E      &kp I    &kp O         &none
 &none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                       &kp COMMA  &kp DOT  &kp FSLH      &none
                      &mo 8  &mo 5  &skq LSHFT    &kp SPACE  &mo 6                       &mo 9
             >;
