@@ -33,6 +33,98 @@
             ignore-modifiers;
         };
 
+       hold_mouse_layer_mac: HoldMouseLayerMac {
+            compatible = "zmk,behavior-hold-mouse-layer";
+            #binding-cells = <0>;
+            mouse-layer = <3>;
+        };
+
+        hold_mouse_layer_win: HoldMouseLayerWin {
+            compatible = "zmk,behavior-hold-mouse-layer";
+            #binding-cells = <0>;
+            mouse-layer = <7>;
+        };
+
+        latch_mouse_layer_mac: LatchMouseLayerMac {
+            compatible = "zmk,behavior-latch-mouse-layer";
+            #binding-cells = <0>;
+            mouse-layer = <3>;
+        };
+
+        latch_mouse_layer_win: LatchMouseLayerWin {
+            compatible = "zmk,behavior-latch-mouse-layer";
+            #binding-cells = <0>;
+            mouse-layer = <7>;
+        };
+
+        unlatch_mouse_layer_mac: UnlatchMouseLayerMac {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 0>;
+        };
+
+        unlatch_mouse_layer_win: UnlatchMouseLayerWin {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&to 4>;
+        };
+
+        kp_or_LatchMouseLayer_mac_inner: KpOrLatchMouseLayerMacInner {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&latch_mouse_layer_mac>, <&kp>;
+        };
+
+        kp_or_LatchMouseLayer_win_inner: KpOrLatchMouseLayerWinInner {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&latch_mouse_layer_win>, <&kp>;
+        };
+
+        kp_or_HoldMouseLayer_mac_inner: KpOrHoldMouseLayerMacInner {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&hold_mouse_layer_mac>, <&kp>;
+        };
+
+        kp_or_HoldMouseLayer_win_inner: KpOrHoldMouseLayerWinInner {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&hold_mouse_layer_win>, <&kp>;
+        };
+
+        kp_or_LatchMouseLayer_mac: KpOrLatchMouseLayerMac {
+            compatible = "zmk,behavior-kp-or-latch-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_LatchMouseLayer_mac_inner>;
+        };
+
+        kp_or_LatchMouseLayer_win: KpOrLatchMouseLayerWin {
+            compatible = "zmk,behavior-kp-or-latch-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_LatchMouseLayer_win_inner>;
+        };
+
+        kp_or_HoldMouseLayer_mac: KpOrHoldMouseLayerMac {
+            compatible = "zmk,behavior-kp-or-hold-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_HoldMouseLayer_mac_inner>;
+        };
+
+        kp_or_HoldMouseLayer_win: KpOrHoldMouseLayerWin {
+            compatible = "zmk,behavior-kp-or-hold-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_HoldMouseLayer_win_inner>;
+        };
+
         auto_mouse_layer_config {
             compatible = "zmk,behavior-auto-mouse-layer";
             mac-base-layer = <0>;
@@ -343,126 +435,127 @@
         |           &kp RA(GRAVE)                RALT(KC_GRV)
     */
 
+
     keymap {
         compatible = "zmk,keymap";
 
         Mac_Base_Layout_0 {
             label = "Apple";
             bindings = <
-&kp Q         &kp W  &kp F        &kp P      &kp B  &kp J  &kp L  &kp U  &kp Y      &kp RA(RBKT)
-&kp A         &kp R  &kp S        &kp T      &kp G  &kp M  &kp N  &kp E  &kp I      &kp O
-&kp LC(LEFT)  &kp Z  &kp X        &kp C      &kp D  &kp V  &kp K  &kp H  &kp COMMA  &kp DOT       &kp FSLH  &kp LC(RIGHT)
-&mo 8         &mo 1  &skq LSHIFT  &kp SPACE  &mo 2  &mo 9
+ &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                        &kp U      &kp Y    &kp RA(RBKT) 
+  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_HoldMouseLayer_mac N  &kp E      &kp I    &kp O        
+&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                        &kp COMMA  &kp DOT  &kp FSLH      &none
+                     &mo 8  &mo 1  &skq LSHFT    &kp SPACE  &mo 2                        &mo 9
             >;
         };
 
         Mac_Extend_Layout_1 {
             label = "Extend";
             bindings = <
-&kp LG(Z)  &kp LG(X)  &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))  &kp LG(LEFT)  &kp PG_DN  &kp PG_UP  &kp LG(RIGHT)  &kp LG(LS(N4))
-&skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &kp BSPC       &kp LEFT      &kp DOWN   &kp UP     &kp RIGHT      &kp ESC
-&none      &kp RET    &kp LS(TAB)  &kp TAB     &skq RCTRL     &none         &kp DEL    &kp BSPC   &kp TAB        &kp INS         &kp CAPS  &none
-&none      &none      &none        &kp RET     &mo 10         &none
+ &kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))    &kp LG(LEFT)  &kp PG_DN     &kp PG_UP      &kp LG(RIGHT)  &kp LG(LS(N4))  
+  &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BSPC         &kp LEFT      &kp DOWN      &kp UP         &kp RIGHT      &kp ESC        
+&none  &kp RET    &kp LS(TAB)  &kp TAB      &skq RCTRL  &none            &kp DEL       &kp BSPC      &kp TAB        &kp INS        &kp CAPS        &none
+                               &mo 11       &none       &none            &kp RET       &kp LC(LEFT)  &kp LC(RIGHT)
             >;
         };
 
         Mac_Symbol_Layout_2 {
             label = "Symbol";
             bindings = <
-&kp EXCL  &kp AT        &kp HASH           &kp DOLLAR  &kp PRCNT   &kp LS(N6)     &kp AMPS       &kp ASTRK      &kp PLUS     &kp RA(MINUS)
-&kp BSLH  &kp RA(N7)    &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)  &kp KP_DIVIDE  &kp MINUS      &kp RA(COMMA)  &kp COLON    &kp EQUAL
-&none     &kp RA(LBKT)  &kp RA(N8)         &kp RBKT    &kp RPAR    &kp RA(N0)     &kp RA(GRAVE)  &kp UNDER      &kp RA(DOT)  &kp SEMI       &kp APOS  &none
-&none     &mo 10        &skq LSHIFT        &none       &none       &mo 11
+ &kp EXCL      &kp AT      &kp HASH           &kp DOLLAR  &kp PRCNT      &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(MINUS)  
+ &kp BSLH      &kp RA(N7)  &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)     &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL      
+&none  &kp RA(LBKT)  &kp RA(N8)  &kp RBKT           &kp RPAR    &kp RA(N0)     &kp RA(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOS       &none
+                                 &none              &none       &skq LSHIFT    &none          &none      &mo 10
             >;
         };
 
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&none      &none      &kp LG(LBKT)     &kp LG(RBKT)  &none         &none  &none  &none  &none  &none
-&kp LALT   &kp LGUI   &kp LSHFT        &kp LCTRL     &none         &none  &none  &none  &none  &none
-&trans     &LCLKx2    &none            &none         &HID_TempDPI  &none  &none  &none  &none  &none  &none  &trans
-&mkp RCLK  &mkp LCLK  &HID_DragScroll  &none         &none         &none
+&none     &none         &HID_DragScroll  &none      &none      &none  &none                  &none                   &none  &none                    
+  &kp LALT  &HID_TempDPI  &kp LSHFT        &kp LCTRL  &kp DEL    &none  &hold_mouse_layer_mac  &latch_mouse_layer_mac  &none  &unlatch_mouse_layer_mac  
+&none  &kp RET   &kp LS(TAB)   &kp TAB          &none      &none      &none  &none                  &none                   &none  &none                     &none
+                               &mkp RCLK        &mkp LCLK  &LCLKx2    &none  &kp LG(LBKT)           &kp LG(RBKT)
             >;
         };
 
         Win_Base_Layout_4 {
             label = "Windows";
             bindings = <
-&kp Q             &kp W  &kp F        &kp P      &kp B  &kp J  &kp L  &kp U  &kp Y      &kp RC(RBKT)
-&kp A             &kp R  &kp S        &kp T      &kp G  &kp M  &kp N  &kp E  &kp I      &kp O
-&kp LC(LG(LEFT))  &kp Z  &kp X        &kp C      &kp D  &kp V  &kp K  &kp H  &kp COMMA  &kp DOT       &kp FSLH  &kp LC(LG(RIGHT))
-&mo 8             &mo 5  &skq LSHIFT  &kp SPACE  &mo 6  &mo 9
+ &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                        &kp U      &kp Y    &kp RC(RBKT) 
+ &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_HoldMouseLayer_win N  &kp E      &kp I    &kp O        
+&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                        &kp COMMA  &kp DOT  &kp FSLH      &none
+                     &mo 8  &mo 5  &skq LSHFT    &kp SPACE  &mo 6                        &mo 9
             >;
         };
 
         Win_Extend_Layout_5 {
             label = "Extend";
             bindings = <
-&kp LC(Z)  &kp LC(X)  &kp LC(C)    &kp LC(V)   &kp LC(Y)   &kp HOME  &kp PG_DN  &kp PG_UP  &kp END    &kp PRINTSCREEN
-&skq LALT  &skq LGUI  &skq LSHIFT  &skq LCTRL  &kp BSPC    &kp LEFT  &kp DOWN   &kp UP     &kp RIGHT  &kp ESC
-&none      &kp RET    &kp LS(TAB)  &kp TAB     &skq RCTRL  &none     &kp DEL    &kp BSPC   &kp TAB    &kp INS          &kp CAPS  &none
-&none      &none      &none        &kp RET     &mo 10      &none
+ &kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)    &kp HOME  &kp PG_DN         &kp PG_UP          &kp END    &kp PRINTSCREEN 
+ &skq LALT  &skq LGUI    &skq LSHIFT  &skq LCTRL  &kp BSPC     &kp LEFT  &kp DOWN          &kp UP             &kp RIGHT  &kp ESC          
+&none  &kp RET    &kp LS(TAB)  &kp TAB      &skq RCTRL  &none        &kp DEL   &kp BSPC          &kp TAB            &kp INS    &kp CAPS         &none
+                               &mo 11       &none       &none        &kp RET   &kp LC(LG(LEFT))  &kp LC(LG(RIGHT))
             >;
         };
 
         Win_Symbol_Layout_6 {
             label = "Symbol";
             bindings = <
-&kp EXCL  &kp AT        &kp HASH           &kp DOLLAR  &kp PRCNT   &kp LS(N6)     &kp AMPS       &kp ASTRK      &kp PLUS     &kp RA(GRAVE)
-&kp BSLH  &kp RA(N7)    &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)  &kp KP_DIVIDE  &kp MINUS      &kp RA(COMMA)  &kp COLON    &kp EQUAL
-&none     &kp RA(LBKT)  &kp RA(N8)         &kp RBKT    &kp RPAR    &kp RA(N0)     &kp LS(GRAVE)  &kp UNDER      &kp RA(DOT)  &kp SEMI       &kp APOS  &none
-&none     &mo 10        &skq LSHIFT        &none       &none       &mo 11
+ &kp EXCL      &kp AT      &kp HASH           &kp DOLLAR  &kp PRCNT      &kp LS(N6)     &kp AMPS   &kp ASTRK      &kp PLUS   &kp RA(GRAVE)  
+ &kp BSLH      &kp RA(N7)  &th LS(LBKT) LBKT  &kp LPAR    &kp RA(N9)     &kp KP_DIVIDE  &kp MINUS  &kp RA(COMMA)  &kp COLON  &kp EQUAL     
+&none  &kp RA(LBKT)  &kp RA(N8)  &kp RBKT           &kp RPAR    &kp RA(N0)     &kp LS(GRAVE)  &kp UNDER  &kp RA(DOT)    &kp SEMI   &kp APOS       &none
+                                 &none              &none       &skq LSHIFT    &none          &none      &mo 10
             >;
         };
 
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&none      &none      &mkp MB4         &mkp MB5   &none         &none  &none  &none  &none  &none
-&kp LALT   &kp LGUI   &kp LSHFT        &kp LCTRL  &none         &none  &none  &none  &none  &none
-&trans     &LCLKx2    &none            &none      &LED_TempDPI  &none  &none  &none  &none  &none  &none  &trans
-&mkp RCLK  &mkp LCLK  &LED_DragScroll  &none      &none         &none
+  &none     &none         &LED_DragScroll  &none      &none      &none  &none                  &none                   &none  &none                     
+  &kp LALT  &LED_TempDPI  &kp LSHFT        &kp LCTRL  &kp DEL    &none  &hold_mouse_layer_win  &latch_mouse_layer_win  &none  &unlatch_mouse_layer_win 
+&none  &kp RET   &kp LS(TAB)   &kp TAB          &none      &none      &none  &none                  &none                   &none  &none                     &none
+                               &mkp RCLK        &mkp LCLK  &LCLKx2    &none  &kp LA(LEFT)           &kp LA(RIGHT)
             >;
         };
 
         Num_Layout_8 {
             label = "Num";
             bindings = <
-&none     &none     &kp LS(LA(LC(LGUI)))  &none         &none      &none         &kp N7       &kp N8  &kp N9  &none
-&kp LALT  &kp LGUI  &kp LSHIFT            &kp LCTRL     &none      &kp KP_MINUS  &kp N4       &kp N5  &kp N6  &kp KP_DIVIDE
-&none     &kp RALT  &kp GLOBE             &none         &kp RCTRL  &none         &kp KP_PLUS  &kp N1  &kp N2  &kp N3         &kp KP_MULTIPLY  &none
-&none     &none     &none                 &kp KP_ENTER  &kp N0     &kp KP_DOT
+ &none     &none      &kp LC(LS(LA(LEFT_GUI)))  &none      &none    &none         &kp N7  &kp N8      &kp N9  &kp LNLCK       
+  &kp LALT  &kp LGUI   &kp LSHIFT                &kp LCTRL  &none    &kp KP_MINUS  &kp N4  &kp N5      &kp N6  &kp KP_DIVIDE   
+&none  &kp RALT  &kp GLOBE  &none                     &kp RCTRL  &none    &kp KP_PLUS   &kp N1  &kp N2      &kp N3  &kp KP_MULTIPLY  &none
+                            &none                     &mo 11     &none    &kp KP_ENTER  &kp N0  &kp KP_DOT
             >;
         };
 
         Fn_Layout_9 {
             label = "Fn";
             bindings = <
-&none     &none     &none       &none      &none      &none  &kp F7  &kp F8  &kp F9  &kp F10
-&kp LALT  &kp LGUI  &kp LSHIFT  &kp LCTRL  &none      &none  &kp F4  &kp F5  &kp F6  &kp F11
-&none     &kp RALT  &kp GLOBE   &none      &kp RCTRL  &none  &none   &kp F1  &kp F2  &kp F3   &kp F12  &none
-&none     &none     &none       &none      &mo 11     &none
+ &none     &none      &none       &none      &none    &none  &kp F7  &kp F8  &kp F9  &kp F10  
+  &kp LALT  &kp LGUI   &kp LSHIFT  &kp LCTRL  &none    &none  &kp F4  &kp F5  &kp F6  &kp F11 
+&none  &kp RALT  &kp GLOBE  &none       &kp RCTRL  &none    &none  &kp F1  &kp F2  &kp F3  &kp F12  &none
+                            &none       &none      &none    &none  &mo 10  &none
             >;
         };
 
         Config_Layout_10 {
             label = "Config";
             bindings = <
-&none             &none           &none          &none          &none  &none  &none         &none         &none  &none
-&Macro_SetiPhone  &Macro_SetiPad  &Macro_SetWin  &Macro_SetMac  &none  &none  &out OUT_BLE  &out OUT_USB  &none  &none
-&none             &none           &none          &none          &none  &none  &none         &none         &none  &none  &none  &none
-&none             &none           &none          &none          &none  &none
+ &none             &none           &out OUT_USB   &out OUT_BLE   &none    &none  &none  &none  &none  &none  
+ &Macro_SetiPhone  &Macro_SetiPad  &Macro_SetWin  &Macro_SetMac  &none    &none  &none  &none  &none  &none 
+&none  &none             &none           &none          &none          &none    &none  &none  &none  &none  &none  &none
+                                         &none          &none          &none    &none  &none  &none
             >;
         };
 
         Reset_Layout_11 {
             label = "Reset";
             bindings = <
-&bootloader  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&bt BT_CLR   &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none        &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
-&none        &none  &none  &none  &none  &none
+ &bootloader     &none  &none  &none  &none    &none  &none  &none  &none  &none  
+ &bt BT_CLR      &none  &none  &none  &none    &none  &none  &none  &none  &none  
+&none  &studio_unlock  &none  &none  &none  &none    &none  &none  &none  &none  &none  &none
+                              &none  &none  &none    &none  &none  &none
             >;
         };
     };
