@@ -73,6 +73,22 @@
             bindings = <&latch_mouse_layer_win>, <&kp>;
         };
 
+        kp_or_HoldMouseLayer_mac_inner: KpOrHoldMouseLayerMacInner {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&hold_mouse_layer_mac>, <&kp>;
+        };
+
+        kp_or_HoldMouseLayer_win_inner: KpOrHoldMouseLayerWinInner {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "tap-preferred";
+            bindings = <&hold_mouse_layer_win>, <&kp>;
+        };
+
         kp_or_LatchMouseLayer_mac: KpOrLatchMouseLayerMac {
             compatible = "zmk,behavior-kp-or-latch-mouse-layer";
             #binding-cells = <1>;
@@ -83,6 +99,18 @@
             compatible = "zmk,behavior-kp-or-latch-mouse-layer";
             #binding-cells = <1>;
             hold-tap-behavior = <&kp_or_LatchMouseLayer_win_inner>;
+        };
+
+        kp_or_HoldMouseLayer_mac: KpOrHoldMouseLayerMac {
+            compatible = "zmk,behavior-kp-or-hold-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_HoldMouseLayer_mac_inner>;
+        };
+
+        kp_or_HoldMouseLayer_win: KpOrHoldMouseLayerWin {
+            compatible = "zmk,behavior-kp-or-hold-mouse-layer";
+            #binding-cells = <1>;
+            hold-tap-behavior = <&kp_or_HoldMouseLayer_win_inner>;
         };
 
         auto_mouse_layer_config {
@@ -395,10 +423,10 @@
         Mac_Base_Layout_0 {
             label = "Apple";
             bindings = <
-&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                         &kp U      &kp Y    &kp RA(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer_mac N  &kp E      &kp I    &kp O         &none
-&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                         &kp COMMA  &kp DOT  &kp FSLH      &none
-                     &mo 8  &mo 1  &skq LSHFT    &kp SPACE  &mo 2                         &mo 9
+&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RA(RBKT)  &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_HoldMouseLayer_mac N  &kp E      &kp I    &kp O         &none
+&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                       &kp COMMA  &kp DOT  &kp FSLH      &none
+                     &mo 8  &mo 1  &skq LSHFT    &kp SPACE  &mo 2                       &mo 9
             >;
         };
 
@@ -435,10 +463,10 @@
         Win_Base_Layout_4 {
             label = "Windows";
             bindings = <
-&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                         &kp U      &kp Y    &kp RC(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_LatchMouseLayer_win N  &kp E      &kp I    &kp O         &none
-&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                         &kp COMMA  &kp DOT  &kp FSLH      &none
-                     &mo 8  &mo 5  &skq LSHFT    &kp SPACE  &mo 6                         &mo 9
+&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RC(RBKT)  &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp_or_HoldMouseLayer_win N  &kp E      &kp I    &kp O         &none
+&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp H                       &kp COMMA  &kp DOT  &kp FSLH      &none
+                     &mo 8  &mo 5  &skq LSHFT    &kp SPACE  &mo 6                       &mo 9
             >;
         };
 

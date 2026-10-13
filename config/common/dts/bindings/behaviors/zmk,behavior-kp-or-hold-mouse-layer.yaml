@@ -1,0 +1,8 @@
+description: OS-specific tap-key / momentary mouse-layer hold-tap wrapper
+compatible: "zmk,behavior-kp-or-hold-mouse-layer"
+include: one_param.yaml
+
+properties:
+  hold-tap-behavior:
+    type: phandle
+    required: true

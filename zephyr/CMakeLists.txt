@@ -11,6 +11,7 @@ if(CONFIG_ZMK_BEHAVIOR_HOLD_MOUSE_LAYER)
         ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_hold_mouse_layer.c
         ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_latch_mouse_layer.c
         ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_kp_or_latch_mouse_layer.c
+        ${CMAKE_CURRENT_LIST_DIR}/../config/common/src/behavior_kp_or_hold_mouse_layer.c
     )
 endif()
 
