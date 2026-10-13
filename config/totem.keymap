@@ -206,12 +206,6 @@
             key-positions = <25 14>;
             layers = <0 4>;
         };
-
-        Combo_Unlock {
-            bindings = <&studio_unlock>;
-            key-positions = <0 9>;
-            layers = <0 4>;
-        };
     };
 
     macros {
