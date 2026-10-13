@@ -57,6 +57,18 @@
             mouse-layer = <7>;
         };
 
+        unlatch_mouse_layer_mac: UnlatchMouseLayerMac {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&to 0>, <&to 0>;
+        };
+
+        unlatch_mouse_layer_win: UnlatchMouseLayerWin {
+            compatible = "zmk,behavior-mod-morph";
+            #binding-cells = <0>;
+            bindings = <&to 4>, <&to 4>;
+        };
+
         kp_or_LatchMouseLayer_mac_inner: KpOrLatchMouseLayerMacInner {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
