@@ -465,7 +465,7 @@
         Mac_Mouse_Layout_3 {
             label = "Mouse";
             bindings = <
-&none  &none     &none         &HID_DragScroll  &kq LCTRL               &none                      &none  &none         &none         &none  &none  &none
+&none  &none     &none         &HID_DragScroll  &kp LCTRL               &none                      &none  &none         &none         &none  &none  &none
 &none  &kp LALT  &skq LGUI     &kp LSHFT        &mkp LCLK               &kp DEL                    &none  &mkp RCLK     &none         &none  &none  &none
 &none  &kp RET   &kp LS(TAB)   &kp TAB          &HID_TempDPI            &none                      &none  &none         &none         &none  &none  &none
                                &none            &hold_mouse_layer_mac   &none                      &none  &kp LG(LBKT)  &kp LG(RBKT)
@@ -505,7 +505,7 @@
         Win_Mouse_Layout_7 {
             label = "Mouse";
             bindings = <
-&none  &none     &none         &LED_DragScroll  &kq LCTRL              &none                      &none  &none         &none         &none  &none  &none
+&none  &none     &none         &LED_DragScroll  &kp LCTRL              &none                      &none  &none         &none         &none  &none  &none
 &none  &kp LALT  &skq LGUI     &kp LSHFT        &mkp LCLK              &kp DEL                    &none  &mkp RCLK     &none         &none  &none  &none
 &none  &kp RET   &kp LS(TAB)   &kp TAB          &HID_TempDPI           &none                      &none  &none         &none         &none  &none  &none
                                &none            &hold_mouse_layer_win  &none                      &none  &kp LA(LEFT)  &kp LA(RIGHT)
