@@ -466,8 +466,8 @@
             label = "Mouse";
             bindings = <
 &none  &kp LG(Z)  &kp LG(X)    &kp LG(C)    &kp LG(V)   &kp LG(LS(Z))      &none  &none                  &none         &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHIFT  &kp LCTRL        &none              &none  &none                  &none         &none  &none  &none
-&none  &none     &none     &none       &HID_TempDPI     &none              &none  &hold_mouse_layer_mac  &none         &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHIFT  &kp LCTRL        &kp BSPC              &none  &none                  &none         &none  &none  &none
+&none  &kp RET    &kp LS(TAB)  &kp TAB        &HID_TempDPI     &none              &none  &hold_mouse_layer_mac  &none         &none  &none  &none
                            &mkp RCLK   &mkp LCLK        &HID_DragScroll    &none  &kp LG(LBKT)           &kp LG(RBKT)
             >;
         };
@@ -506,8 +506,8 @@
             label = "Mouse";
             bindings = <
 &none  &kp LC(Z)  &kp LC(X)    &kp LC(C)    &kp LC(V)   &kp LC(Y)          &none  &none                  &none          &none  &none  &none
-&none  &kp LALT  &kp LGUI  &kp LSHIFT  &kp LCTRL        &none              &none  &none                  &none          &none  &none  &none
-&none  &none     &none     &none       &LED_TempDPI     &none              &none  &hold_mouse_layer_win  &none          &none  &none  &none
+&none  &kp LALT  &kp LGUI  &kp LSHIFT  &kp LCTRL       &kp BSPC               &none  &none                  &none          &none  &none  &none
+&none  &kp RET    &kp LS(TAB)  &kp TAB      &LED_TempDPI     &none              &none  &hold_mouse_layer_win  &none          &none  &none  &none
                            &mkp RCLK   &mkp LCLK        &LED_DragScroll    &none  &kp LA(LEFT)           &kp LA(RIGHT)
             >;
         };
