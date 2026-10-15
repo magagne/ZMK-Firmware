@@ -507,7 +507,7 @@
             bindings = <
 &none  &none     &none         &LED_DragScroll  &none                   &none                      &none  &none         &none         &none       &none       &none
 &none  &LCLKx2   &mkp MCLK     &mkp RCLK        &mkp LCLK               &kp DEL                    &none  &kp LCTRL     &kp LSHFT     &skq LGUI   &kp LALT    &none
-&none  &kp RET   &kp LS(TAB)   &kp TAB          &none                   &none                      &none  &HID_TempDPI  &none         &none       &none       &none
+&none  &kp RET   &kp LS(TAB)   &kp TAB          &none                   &none                      &none  &LED_TempDPI  &none         &none       &none       &none
                                &none            &hold_mouse_layer_win   &none                      &none  &kp LA(LEFT)  &kp LA(RIGHT)
             >;
         };
