@@ -435,10 +435,10 @@
         Mac_Base_Layout_0 {
             label = "Apple";
             bindings = <
-&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                      &kp U      &kp Y    &kp RA(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp N                      &kp E      &kp I    &kp O         &none
-&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp_or_HoldMouseLayer_mac  &kp COMMA  &kp DOT  &kp FSLH      &none
-                     &mo 8  &mo 1  &skq LSHFT    &kp SPACE  &mo 2                      &mo 9
+&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RA(RBKT)  &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp N                       &kp E      &kp I    &kp O         &none
+&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp_or_HoldMouseLayer_mac H &kp COMMA  &kp DOT  &kp FSLH      &none
+                     &mo 8  &mo 1  &skq LSHFT    &kp SPACE  &mo 2                       &mo 9
             >;
         };
 
@@ -475,10 +475,10 @@
         Win_Base_Layout_4 {
             label = "Windows";
             bindings = <
-&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                      &kp U      &kp Y    &kp RC(RBKT)  &none
-&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp N                      &kp E      &kp I    &kp O         &none
-&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp_or_HoldMouseLayer_win  &kp COMMA  &kp DOT  &kp FSLH      &none
-                     &mo 8  &mo 5  &skq LSHFT    &kp SPACE  &mo 6                      &mo 9
+&none  &kp Q  &kp W  &kp F  &kp P  &kp B         &kp J      &kp L                       &kp U      &kp Y    &kp RC(RBKT)  &none
+&none  &kp A  &kp R  &kp S  &kp T  &kp G         &kp M      &kp N                       &kp E      &kp I    &kp O         &none
+&none  &kp Z  &kp X  &kp C  &kp D  &kp V         &kp K      &kp_or_HoldMouseLayer_win H &kp COMMA  &kp DOT  &kp FSLH      &none
+                     &mo 8  &mo 5  &skq LSHFT    &kp SPACE  &mo 6                       &mo 9
             >;
         };
 
