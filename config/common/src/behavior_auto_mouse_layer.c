@@ -142,7 +142,7 @@ void behavior_unlatch_mouse_layer(zmk_keymap_layer_id_t layer, zmk_keymap_layer_
         }
     }
     reconcile();
-    zmk_keymap_layer_to(base_layer, false);
+    zmk_keymap_layer_to(base_layer);
 }
 
 static int hid_auto_mouse_layer_listener(const zmk_event_t *eh) {
