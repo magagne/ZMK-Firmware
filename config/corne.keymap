@@ -144,6 +144,12 @@
             compatible = "zmk,behavior-raw-temporary-dpi";
             #binding-cells = <0>;
         };
+
+        LED_TempDPI: LED_TempDPI {
+            compatible = "zmk,behavior-raw-temporary-dpi";
+            #binding-cells = <0>;
+            windows-host;
+        };
     };
 
     combos {
@@ -401,17 +407,6 @@
                 <&kp SLCK>;
         };
 
-        LED_TempDPI: LED_TempDPI {
-            compatible = "zmk,behavior-macro";
-            #binding-cells = <0>;
-            wait-ms = <0>;
-            bindings =
-                <&macro_tap>,
-                <&kp KP_NUMLOCK>,
-                <&macro_pause_for_release>,
-                <&macro_tap>,
-                <&kp KP_NUMLOCK>;
-        };
     };
 
     /*

@@ -4,3 +4,4 @@
 void behavior_hold_mouse_layer_update(zmk_keymap_layer_id_t layer, bool pressed);
 void behavior_latch_mouse_layer_set(zmk_keymap_layer_id_t layer);
 void behavior_unlatch_mouse_layer(zmk_keymap_layer_id_t mouse_layer, zmk_keymap_layer_id_t base_layer);
+void behavior_manual_temporary_dpi_set(bool windows_host, bool active);

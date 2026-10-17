@@ -1,3 +1,7 @@
-description: Raw HID temporary DPI offset
+description: Raw HID or Windows Num Lock temporary DPI signal
 compatible: "zmk,behavior-raw-temporary-dpi"
+properties:
+  windows-host:
+    type: boolean
+    description: Use a Num Lock pulse instead of Raw HID signaling.
 include: zero_param.yaml

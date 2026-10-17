@@ -82,6 +82,14 @@ static void reconcile(void) {
     bool windows_requested = windows_base &&
         (windows_caps_requested || windows_mouse_layer_hold_requested || windows_mouse_layer_latch_requested);
 
+    bool mac_manual_dpi_requested = mac_base && !windows_base &&
+        (mac_mouse_layer_hold_requested || mac_mouse_layer_latch_requested);
+    bool windows_manual_dpi_requested = windows_base &&
+        (windows_mouse_layer_hold_requested || windows_mouse_layer_latch_requested);
+
+    behavior_manual_temporary_dpi_set(false, mac_manual_dpi_requested);
+    behavior_manual_temporary_dpi_set(true, windows_manual_dpi_requested);
+
     reconcile_layer(cfg.mac_mouse_layer, mac_requested, &mac_layer_owned);
     reconcile_layer(cfg.windows_mouse_layer, windows_requested, &windows_layer_owned);
 }
