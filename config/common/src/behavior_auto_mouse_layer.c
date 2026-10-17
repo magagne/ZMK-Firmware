@@ -82,6 +82,14 @@ static void reconcile(void) {
     bool windows_requested = windows_base &&
         (windows_caps_requested || windows_mouse_layer_hold_requested || windows_mouse_layer_latch_requested);
 
+    bool mac_manual_dpi_requested = mac_base && !windows_base &&
+        (mac_mouse_layer_hold_requested || mac_mouse_layer_latch_requested);
+    bool windows_manual_dpi_requested = windows_base &&
+        (windows_mouse_layer_hold_requested || windows_mouse_layer_latch_requested);
+
+    behavior_manual_temporary_dpi_set(false, mac_manual_dpi_requested);
+    behavior_manual_temporary_dpi_set(true, windows_manual_dpi_requested);
+
     reconcile_layer(cfg.mac_mouse_layer, mac_requested, &mac_layer_owned);
     reconcile_layer(cfg.windows_mouse_layer, windows_requested, &windows_layer_owned);
 }
@@ -125,6 +133,24 @@ void behavior_latch_mouse_layer_set(zmk_keymap_layer_id_t layer) {
         windows_mouse_layer_latch_requested = true;
     }
     reconcile();
+}
+
+/* Explicitly clear manual requests and prevent stale auto/Caps state from relatching. */
+void behavior_unlatch_mouse_layer(zmk_keymap_layer_id_t layer, zmk_keymap_layer_id_t base_layer) {
+    if (layer == cfg.mac_mouse_layer) {
+        mac_auto_requested = false;
+        mac_mouse_layer_hold_requested = false;
+        mac_mouse_layer_latch_requested = false;
+        k_work_cancel_delayable(&auto_timeout_work);
+    } else if (layer == cfg.windows_mouse_layer) {
+        windows_mouse_layer_hold_requested = false;
+        windows_mouse_layer_latch_requested = false;
+        if (zmk_keymap_layer_active(cfg.windows_base_layer)) {
+            windows_caps_suppressed = true;
+        }
+    }
+    reconcile();
+    zmk_keymap_layer_to(base_layer);
 }
 
 static int hid_auto_mouse_layer_listener(const zmk_event_t *eh) {

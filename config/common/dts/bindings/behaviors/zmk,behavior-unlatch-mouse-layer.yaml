@@ -1,0 +1,11 @@
+description: Clear the manual mouse-layer request and return control to the layer controller
+compatible: "zmk,behavior-unlatch-mouse-layer"
+include: zero_param.yaml
+
+properties:
+  mouse-layer:
+    type: int
+    required: true
+  base-layer:
+    type: int
+    required: true
