@@ -144,3 +144,58 @@ The firmware names reported by ZMK are:
     Totem-ZMK
 
 These names identify the firmware configuration and are independent of the GitHub repository name.
+
+## Manual Mouse Layer and Temporary DPI Control
+
+The Corne configuration supports host-specific temporary DPI signaling when
+the Mouse layer is manually activated.
+
+### Temporary DPI signaling
+
+- **macOS:** Uses the Ploopy Raw HID protocol to enable or disable temporary DPI.
+- **Windows:** Uses a Num Lock pulse to signal temporary DPI state.
+- The signaling mechanism is selected by the behavior configuration for the
+  corresponding host.
+
+The keyboard firmware sends the signal; the Ploopy Nano-2 firmware implements
+the actual temporary DPI behavior.
+
+### Mouse layer behavior
+
+The Mac and Windows Mouse layers are separate:
+
+| Host | Mouse layer |
+|---|---:|
+| macOS | 3 |
+| Windows | 7 |
+
+Manual Mouse layer activation also requests temporary DPI for the corresponding
+host. When the manual request is released or cleared, the firmware reconciles
+the request with the active host and Mouse layer state.
+
+The custom unlatch behavior clears the manual Mouse layer request and returns
+to the appropriate base layer. On Windows, it also suppresses stale Caps Lock
+state from immediately relatching the Mouse layer.
+
+### Implementation
+
+The shared behavior implementations are located in:
+
+    config/common/src/behavior_raw_temporary_dpi.c
+    config/common/src/behavior_auto_mouse_layer.c
+    config/common/src/behavior_mouse_layer.h
+
+Their Devicetree bindings are located in:
+
+    config/common/dts/bindings/behaviors/
+
+The host-specific temporary DPI behavior is configured through the
+`windows-host` property of `zmk,behavior-raw-temporary-dpi`.
+
+### Validation
+
+The temporary DPI and Mouse layer changes were built through GitHub Actions
+for the Corne configuration and tested on the physical keyboard. The tested
+feature was merged into `master` in commit:
+
+    d24bb9e1def3059c9f1019a57a3bfbb8bbb0d9f4
