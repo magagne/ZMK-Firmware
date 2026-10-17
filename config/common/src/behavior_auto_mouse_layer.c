@@ -127,6 +127,24 @@ void behavior_latch_mouse_layer_set(zmk_keymap_layer_id_t layer) {
     reconcile();
 }
 
+/* Explicitly clear manual requests and prevent stale auto/Caps state from relatching. */
+void behavior_unlatch_mouse_layer(zmk_keymap_layer_id_t layer, zmk_keymap_layer_id_t base_layer) {
+    if (layer == cfg.mac_mouse_layer) {
+        mac_auto_requested = false;
+        mac_mouse_layer_hold_requested = false;
+        mac_mouse_layer_latch_requested = false;
+        k_work_cancel_delayable(&auto_timeout_work);
+    } else if (layer == cfg.windows_mouse_layer) {
+        windows_mouse_layer_hold_requested = false;
+        windows_mouse_layer_latch_requested = false;
+        if (zmk_keymap_layer_active(cfg.windows_base_layer)) {
+            windows_caps_suppressed = true;
+        }
+    }
+    reconcile();
+    zmk_keymap_layer_to(base_layer, false);
+}
+
 static int hid_auto_mouse_layer_listener(const zmk_event_t *eh) {
     struct raw_hid_received_event *event = as_raw_hid_received_event(eh);
     if (!event || event->length < 2 ||

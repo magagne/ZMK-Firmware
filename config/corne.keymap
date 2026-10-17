@@ -58,15 +58,17 @@
         };
 
         unlatch_mouse_layer_mac: UnlatchMouseLayerMac {
-            compatible = "zmk,behavior-macro";
+            compatible = "zmk,behavior-unlatch-mouse-layer";
             #binding-cells = <0>;
-            bindings = <&to 0>;
+            mouse-layer = <3>;
+            base-layer = <0>;
         };
 
         unlatch_mouse_layer_win: UnlatchMouseLayerWin {
-            compatible = "zmk,behavior-macro";
+            compatible = "zmk,behavior-unlatch-mouse-layer";
             #binding-cells = <0>;
-            bindings = <&to 4>;
+            mouse-layer = <7>;
+            base-layer = <4>;
         };
 
         kp_or_LatchMouseLayer_mac_inner: KpOrLatchMouseLayerMacInner {
